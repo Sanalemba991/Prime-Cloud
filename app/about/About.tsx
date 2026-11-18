@@ -79,10 +79,9 @@ export default function About() {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: false, amount: 0.2 }}
                                 transition={{ duration: 1.0, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                                className="text-[13.5px] sm:text-sm text-slate-500 font-normal leading-relaxed max-w-lg mb-8"
+                                className="text-[13.5px] sm:text-sm text-slate-500 font-normal leading-relaxed max-w-xl mb-8"
                             >
-                                We help organizations simplify operations, integrate systems,
-                                and drive sustainable growth through industry-leading ERP and AI solutions.
+                                We empower modern enterprises by simplifying complex operations, unifying disparate workflows, and driving continuous digital innovation with certified expertise in Odoo, Zoho, Tally, and intelligent AI automation.
                             </motion.p>
 
                             {/* CTA Buttons */}

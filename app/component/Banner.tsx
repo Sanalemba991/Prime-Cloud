@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 export default function Banner() {
     return (
-        <section className="relative w-full min-h-[580px] lg:min-h-[640px] flex items-center bg-white overflow-hidden py-12 lg:py-0 select-none">
+        <section className="relative w-full min-h-[500px] lg:min-h-[560px] flex items-center bg-white overflow-hidden py-10 lg:py-14 select-none">
             {/* Background Graphic Image (Laptop + Waves + Ambient Surface) */}
             <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden select-none">
                 <Image
@@ -60,9 +60,7 @@ export default function Banner() {
                             transition={{ duration: 1.0, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
                             className="text-[14px] sm:text-[15px] leading-relaxed text-[#334155] max-w-[440px] mb-7 font-normal"
                         >
-                            Implementation, customization and integration of leading business
-                            platforms like Odoo, Zoho and Tally — combined with AI to automate
-                            and scale your operations.
+                            Seamless ERP solutions with Odoo, Zoho &amp; Tally — powered by AI to automate and scale your business.
                         </motion.p>
 
                         {/* CTA Buttons */}
@@ -155,7 +153,7 @@ export default function Banner() {
                     </div>
 
                     {/* ================= RIGHT COLUMN (Floating Badges - Slide in from Right with Gentle Ambient Float) ================= */}
-                    <div className="lg:col-span-6 relative min-h-[380px] sm:min-h-[440px] flex items-center justify-center">
+                    <div className="lg:col-span-6 relative min-h-[320px] sm:min-h-[380px] flex items-center justify-center">
 
                         {/* FLOATING BADGE 1: Odoo (Top Center-Left) */}
                         <motion.div

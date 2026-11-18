@@ -10,6 +10,7 @@ export default function Navbar() {
 
     const isHome = pathname === "/";
     const isAbout = pathname === "/about" || pathname.startsWith("/about");
+    const isContact = pathname === "/contact" || pathname.startsWith("/contact");
 
     return (
         <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-slate-100/80 select-none">
@@ -98,18 +99,25 @@ export default function Navbar() {
                             </svg>
                         </button>
                     </div>
-                    <a
-                        href="#contact"
-                        className="text-[14px] font-semibold text-slate-700 hover:text-[#0052ff] transition-colors py-1"
+                    {/* Contact */}
+                    <Link
+                        href="/contact"
+                        className={`relative text-[14px] py-1 transition-colors flex flex-col items-center ${isContact
+                            ? "font-bold text-[#0052ff]"
+                            : "font-semibold text-slate-700 hover:text-[#0052ff]"
+                            }`}
                     >
-                        Contact
-                    </a>
+                        <span>Contact</span>
+                        {isContact && (
+                            <span className="absolute -bottom-2 w-4 h-[2.5px] bg-[#0052ff] rounded-full" />
+                        )}
+                    </Link>
                 </nav>
 
                 {/* Right: Consultation Button (Desktop) & Mobile Hamburger */}
                 <div className="flex items-center gap-3">
                     <a
-                        href="#contact"
+                        href="/contact"
                         className="hidden sm:inline-flex items-center gap-2 bg-[#0052ff] hover:bg-[#0047db] text-white font-semibold px-5 sm:px-6 py-2.5 rounded-full text-xs sm:text-[13px] shadow-[0_4px_16px_rgba(0,82,255,0.28)] hover:shadow-[0_6px_20px_rgba(0,82,255,0.36)] hover:-translate-y-0.5 transition-all duration-200 group"
                     >
                         <span>Book a Consultation</span>
@@ -189,17 +197,23 @@ export default function Navbar() {
                         >
                             Resources
                         </a>
-                        <a
-                            href="#contact"
+                        <Link
+                            href="/contact"
                             onClick={() => setMobileMenuOpen(false)}
-                            className="text-[15px] font-semibold text-slate-700 hover:text-[#0052ff]"
+                            className={`text-[15px] flex items-center justify-between ${isContact
+                                ? "font-bold text-[#0052ff]"
+                                : "font-semibold text-slate-700 hover:text-[#0052ff]"
+                                }`}
                         >
-                            Contact
-                        </a>
+                            <span>Contact</span>
+                            {isContact && (
+                                <span className="w-2 h-2 rounded-full bg-[#0052ff]" />
+                            )}
+                        </Link>
 
                         <div className="pt-3 border-t border-slate-100">
                             <a
-                                href="#contact"
+                                href="/contact"
                                 onClick={() => setMobileMenuOpen(false)}
                                 className="w-full inline-flex items-center justify-center gap-2 bg-[#0052ff] text-white font-semibold py-3 rounded-full text-[13px] shadow-sm"
                             >
