@@ -124,7 +124,7 @@ export default function Navbar() {
                         <span className="group-hover:translate-x-0.5 transition-transform duration-200 font-bold">
                             →
                         </span>
-                    </a>
+                    </a>-
 
                     {/* Hamburger Button for Mobile */}
                     <button

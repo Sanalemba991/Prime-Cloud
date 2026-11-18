@@ -9,13 +9,11 @@ import Footer from "./component/Footer";
 export default function Home() {
   return (
     <main className="min-h-screen bg-white">
-      <Navbar />
       <Banner />
       <Trusted />
       <Service />
       <Digital />
       <Ser />
-      <Footer />
     </main>
   );
 }
