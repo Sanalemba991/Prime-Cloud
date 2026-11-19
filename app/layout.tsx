@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./component/Navbar";
+import Footer from "./component/Footer";
 
 export const metadata: Metadata = {
   title: "PrimeCloud - ERP & AI Solutions",
@@ -18,6 +19,7 @@ export default function RootLayout({
       <Navbar />
 
       <body className="min-h-full flex flex-col font-sans">{children}</body>
+      <Footer />
     </html>
   );
 }

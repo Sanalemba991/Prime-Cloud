@@ -1,32 +1,48 @@
+
 "use client";
-import { animate, createScope } from "animejs";
-import type { Scope } from "animejs";
-import { useEffect, useRef } from "react";
+
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+
+function Cube() {
+    return (
+        <mesh
+            rotation={[0.5, 0.5, 0]}
+            scale={2}
+        >
+            <boxGeometry args={[2, 2, 2]} />
+            <meshStandardMaterial
+                color="#2563eb"
+                roughness={0.4}
+                metalness={0.2}
+            />
+        </mesh>
+    );
+}
 
 export default function Animate() {
-    const root = useRef<HTMLDivElement>(null);
-    const scope = useRef<Scope | null>(null);
-
-    useEffect(() => {
-        if (!root.current) return;
-
-        scope.current = createScope({ root }).add(() => {
-            // Container: use the ref directly — `.selector-demo` won't match
-            // because the scope root itself is excluded from querySelectorAll.
-            animate(root.current!, { scale: 0.75 });
-
-            // Children: scoped selector works fine here.
-            animate(".square", { x: "23rem" });
-        });
-
-        return () => scope.current?.revert();
-    }, []);
-
     return (
-        <div ref={root} id="selector-demo" className="selector-demo">
-            <div className="square" />
-            <div className="square" />
-            <div className="square" />
+        <div className="h-screen w-full">
+            <Canvas camera={{ position: [0, 0, 10], fov: 50 }}>
+                <ambientLight intensity={0.8} />
+
+                <directionalLight
+                    position={[5, 5, 5]}
+                    intensity={2}
+                />
+
+                <pointLight
+                    position={[-3, 2, 3]}
+                    intensity={1.5}
+                />
+
+                <Cube />
+
+                <OrbitControls
+                    enableDamping
+                    dampingFactor={0.05}
+                />
+            </Canvas>
         </div>
     );
 }
