@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useInView, animate } from "framer-motion";
+import { motion, useInView, animate, AnimatePresence } from "framer-motion";
 
 function Counter({ value, suffix = "", duration = 2.2 }: { value: number; suffix?: string; duration?: number }) {
     const ref = useRef<HTMLSpanElement>(null);
@@ -29,6 +29,118 @@ function Counter({ value, suffix = "", duration = 2.2 }: { value: number; suffix
 }
 
 export default function Services() {
+    // Modal state for Enquiry / Contact Form
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedService, setSelectedService] = useState("");
+    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [formData, setFormData] = useState({
+        fullName: "",
+        companyName: "",
+        email: "",
+        phone: "",
+        service: "",
+        message: "",
+    });
+
+    const openEnquiryModal = (serviceName: string) => {
+        setSelectedService(serviceName);
+        setFormData((prev) => ({ ...prev, service: serviceName }));
+        setIsSubmitted(false);
+        setIsModalOpen(true);
+    };
+
+    const closeEnquiryModal = () => {
+        setIsModalOpen(false);
+    };
+
+    const handleInputChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    ) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleFormSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSubmitted(true);
+        setTimeout(() => {
+            setIsSubmitted(false);
+            setIsModalOpen(false);
+            setFormData({
+                fullName: "",
+                companyName: "",
+                email: "",
+                phone: "",
+                service: "",
+                message: "",
+            });
+        }, 2200);
+    };
+
+    // Prevent background scrolling when modal is open
+    useEffect(() => {
+        if (isModalOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "unset";
+        }
+        return () => {
+            document.body.style.overflow = "unset";
+        };
+    }, [isModalOpen]);
+    // Ultra-smooth slow-motion scroll animation to the target section
+    useEffect(() => {
+        let animationFrameId: number;
+
+        const smoothScrollToTarget = (targetElement: HTMLElement, duration = 1800) => {
+            const navbarHeight = 90; // offset for sticky header
+            const startPosition = window.pageYOffset || document.documentElement.scrollTop;
+            const targetPosition = targetElement.getBoundingClientRect().top + startPosition - navbarHeight;
+            const distance = targetPosition - startPosition;
+            let startTime: number | null = null;
+
+            // Quintic easing for exceptionally smooth, gentle deceleration
+            const easeInOutQuint = (t: number): number => {
+                return t < 0.5 ? 16 * t * t * t * t * t : 1 - Math.pow(-2 * t + 2, 5) / 2;
+            };
+
+            const step = (currentTime: number) => {
+                if (!startTime) startTime = currentTime;
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const ease = easeInOutQuint(progress);
+
+                window.scrollTo(0, startPosition + distance * ease);
+
+                if (elapsed < duration) {
+                    animationFrameId = requestAnimationFrame(step);
+                }
+            };
+
+            animationFrameId = requestAnimationFrame(step);
+        };
+
+        const handleHash = () => {
+            const hash = window.location.hash;
+            if (hash) {
+                const targetId = hash.replace("#", "");
+                const element = document.getElementById(targetId);
+                if (element) {
+                    smoothScrollToTarget(element, 1800);
+                }
+            }
+        };
+
+        // Run on initial page load / after full page reload with hash
+        const timer = setTimeout(handleHash, 250);
+        window.addEventListener("hashchange", handleHash);
+
+        return () => {
+            clearTimeout(timer);
+            cancelAnimationFrame(animationFrameId);
+            window.removeEventListener("hashchange", handleHash);
+        };
+    }, []);
+
     return (
         <div className="w-full bg-[#f8fafc]/40 text-slate-800 select-none overflow-hidden font-sans">
 
@@ -191,11 +303,12 @@ export default function Services() {
 
                         {/* 1. Odoo Card */}
                         <motion.div
+                            id="odoo"
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: false, amount: 0.2 }}
                             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                            className="group relative bg-[#fbfcfe] rounded-2xl border border-slate-200/90 p-6 sm:p-7 hover:shadow-xl transition-all duration-300 hover:border-blue-200 flex flex-col justify-between overflow-hidden min-h-[260px] sm:min-h-[275px]"
+                            className="group relative bg-[#fbfcfe] rounded-2xl border border-slate-200/90 p-6 sm:p-7 hover:shadow-xl transition-all duration-300 hover:border-blue-200 flex flex-col justify-between overflow-hidden min-h-[260px] sm:min-h-[275px] scroll-mt-28"
                         >
                             {/* Card Background Image */}
                             <div className="absolute inset-0 w-full h-full pointer-events-none select-none overflow-hidden">
@@ -237,23 +350,25 @@ export default function Services() {
                                     </ul>
                                 </div>
 
-                                <Link
-                                    href="/contact"
-                                    className="inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-bold text-[#0052ff] hover:text-[#003bb5] transition-colors group/link mt-1"
+                                <button
+                                    type="button"
+                                    onClick={() => openEnquiryModal("Odoo ERP Implementation, Customization & Support")}
+                                    className="inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-bold text-[#0052ff] hover:text-[#003bb5] transition-colors group/link mt-1 cursor-pointer w-fit text-left"
                                 >
-                                    <span>Learn More</span>
+                                    <span>Contact Us</span>
                                     <span className="group-hover/link:translate-x-1 transition-transform">&rarr;</span>
-                                </Link>
+                                </button>
                             </div>
                         </motion.div>
 
                         {/* 2. Zoho Card */}
                         <motion.div
+                            id="zoho"
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: false, amount: 0.2 }}
                             transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-                            className="group relative bg-[#fbfcfe] rounded-2xl border border-slate-200/90 p-6 sm:p-7 hover:shadow-xl transition-all duration-300 hover:border-blue-200 flex flex-col justify-between overflow-hidden min-h-[260px] sm:min-h-[275px]"
+                            className="group relative bg-[#fbfcfe] rounded-2xl border border-slate-200/90 p-6 sm:p-7 hover:shadow-xl transition-all duration-300 hover:border-blue-200 flex flex-col justify-between overflow-hidden min-h-[260px] sm:min-h-[275px] scroll-mt-28"
                         >
                             {/* Card Background Image */}
                             <div className="absolute inset-0 w-full h-full pointer-events-none select-none overflow-hidden">
@@ -295,13 +410,14 @@ export default function Services() {
                                     </ul>
                                 </div>
 
-                                <Link
-                                    href="/contact"
-                                    className="inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-bold text-[#0052ff] hover:text-[#003bb5] transition-colors group/link mt-1"
+                                <button
+                                    type="button"
+                                    onClick={() => openEnquiryModal("Zoho Software Implementation & Customization")}
+                                    className="inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-bold text-[#0052ff] hover:text-[#003bb5] transition-colors group/link mt-1 cursor-pointer w-fit text-left"
                                 >
-                                    <span>Learn More</span>
+                                    <span>Contact Us</span>
                                     <span className="group-hover/link:translate-x-1 transition-transform">&rarr;</span>
-                                </Link>
+                                </button>
                             </div>
                         </motion.div>
 
@@ -313,11 +429,12 @@ export default function Services() {
 
                         {/* 3. Tally Card */}
                         <motion.div
+                            id="tally"
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: false, amount: 0.2 }}
                             transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                            className="group relative bg-[#fbfcfe] rounded-2xl border border-slate-200/90 p-5 sm:p-6 hover:shadow-xl transition-all duration-300 hover:border-blue-200 flex flex-col justify-between overflow-hidden min-h-[250px] sm:min-h-[265px]"
+                            className="group relative bg-[#fbfcfe] rounded-2xl border border-slate-200/90 p-5 sm:p-6 hover:shadow-xl transition-all duration-300 hover:border-blue-200 flex flex-col justify-between overflow-hidden min-h-[250px] sm:min-h-[265px] scroll-mt-28"
                         >
                             {/* Card Background Image */}
                             <div className="absolute inset-0 w-full h-full pointer-events-none select-none overflow-hidden">
@@ -358,23 +475,25 @@ export default function Services() {
                                     </ul>
                                 </div>
 
-                                <Link
-                                    href="/contact"
-                                    className="inline-flex items-center gap-1.5 text-[11.5px] sm:text-xs font-bold text-[#0052ff] hover:text-[#003bb5] transition-colors group/link mt-1"
+                                <button
+                                    type="button"
+                                    onClick={() => openEnquiryModal("Tally Implementation & Support")}
+                                    className="inline-flex items-center gap-1.5 text-[11.5px] sm:text-xs font-bold text-[#0052ff] hover:text-[#003bb5] transition-colors group/link mt-1 cursor-pointer w-fit text-left"
                                 >
-                                    <span>Learn More</span>
+                                    <span>Contact Us</span>
                                     <span className="group-hover/link:translate-x-1 transition-transform">&rarr;</span>
-                                </Link>
+                                </button>
                             </div>
                         </motion.div>
 
                         {/* 4. AI Solutions & Automation Card */}
                         <motion.div
+                            id="ai"
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: false, amount: 0.2 }}
                             transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                            className="group relative bg-[#fbfcfe] rounded-2xl border border-slate-200/90 p-5 sm:p-6 hover:shadow-xl transition-all duration-300 hover:border-blue-200 flex flex-col justify-between overflow-hidden min-h-[250px] sm:min-h-[265px]"
+                            className="group relative bg-[#fbfcfe] rounded-2xl border border-slate-200/90 p-5 sm:p-6 hover:shadow-xl transition-all duration-300 hover:border-blue-200 flex flex-col justify-between overflow-hidden min-h-[250px] sm:min-h-[265px] scroll-mt-28"
                         >
                             {/* Card Background Image */}
                             <div className="absolute inset-0 w-full h-full pointer-events-none select-none overflow-hidden">
@@ -416,23 +535,25 @@ export default function Services() {
                                     </ul>
                                 </div>
 
-                                <Link
-                                    href="/contact"
-                                    className="inline-flex items-center gap-1.5 text-[11.5px] sm:text-xs font-bold text-[#0052ff] hover:text-[#003bb5] transition-colors group/link mt-1"
+                                <button
+                                    type="button"
+                                    onClick={() => openEnquiryModal("AI Solutions & Process Automation")}
+                                    className="inline-flex items-center gap-1.5 text-[11.5px] sm:text-xs font-bold text-[#0052ff] hover:text-[#003bb5] transition-colors group/link mt-1 cursor-pointer w-fit text-left"
                                 >
-                                    <span>Learn More</span>
+                                    <span>Contact Us</span>
                                     <span className="group-hover/link:translate-x-1 transition-transform">&rarr;</span>
-                                </Link>
+                                </button>
                             </div>
                         </motion.div>
 
                         {/* 5. Software Integration & Cloud Consulting Card */}
                         <motion.div
+                            id="integration"
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: false, amount: 0.2 }}
                             transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                            className="group relative bg-[#fbfcfe] rounded-2xl border border-slate-200/90 p-5 sm:p-6 hover:shadow-xl transition-all duration-300 hover:border-blue-200 flex flex-col justify-between overflow-hidden min-h-[250px] sm:min-h-[265px]"
+                            className="group relative bg-[#fbfcfe] rounded-2xl border border-slate-200/90 p-5 sm:p-6 hover:shadow-xl transition-all duration-300 hover:border-blue-200 flex flex-col justify-between overflow-hidden min-h-[250px] sm:min-h-[265px] scroll-mt-28"
                         >
                             {/* Card Background Image */}
                             <div className="absolute inset-0 w-full h-full pointer-events-none select-none overflow-hidden">
@@ -474,13 +595,14 @@ export default function Services() {
                                     </ul>
                                 </div>
 
-                                <Link
-                                    href="/contact"
-                                    className="inline-flex items-center gap-1.5 text-[11.5px] sm:text-xs font-bold text-[#0052ff] hover:text-[#003bb5] transition-colors group/link mt-1"
+                                <button
+                                    type="button"
+                                    onClick={() => openEnquiryModal("Software Integration & Data Migration")}
+                                    className="inline-flex items-center gap-1.5 text-[11.5px] sm:text-xs font-bold text-[#0052ff] hover:text-[#003bb5] transition-colors group/link mt-1 cursor-pointer w-fit text-left"
                                 >
-                                    <span>Learn More</span>
+                                    <span>Contact Us</span>
                                     <span className="group-hover/link:translate-x-1 transition-transform">&rarr;</span>
-                                </Link>
+                                </button>
                             </div>
                         </motion.div>
 
@@ -780,6 +902,223 @@ export default function Services() {
                     </motion.div>
                 </div>
             </section>
+
+            {/* =========================================================================
+                ENQUIRY / CONTACT MODAL POPUP
+            ========================================================================= */}
+            <AnimatePresence>
+                {isModalOpen && (
+                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+                        {/* Backdrop overlay */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.25 }}
+                            onClick={closeEnquiryModal}
+                            className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs"
+                        />
+
+                        {/* Modal Container */}
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95, y: 15 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.95, y: 15 }}
+                            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                            className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-slate-100 p-6 sm:p-8 z-10 max-h-[92vh] overflow-y-auto"
+                        >
+                            {/* Close Button */}
+                            <button
+                                type="button"
+                                onClick={closeEnquiryModal}
+                                aria-label="Close Modal"
+                                className="absolute top-4 right-4 sm:top-5 sm:right-5 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 flex items-center justify-center transition-colors cursor-pointer"
+                            >
+                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+
+                            {/* Header */}
+                            <div className="mb-5 pr-6">
+                                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#e8f1fd] mb-2.5 text-[11px] font-bold text-[#0052ff] tracking-tight">
+                                    <span>Quick Enquiry</span>
+                                </div>
+                                <h3 className="text-xl sm:text-2xl font-black text-[#0b132b] tracking-tight">
+                                    Enquire About This Service
+                                </h3>
+                                {selectedService && (
+                                    <p className="text-xs sm:text-[13px] text-[#0052ff] font-semibold mt-1">
+                                        {selectedService}
+                                    </p>
+                                )}
+                                <p className="text-xs text-slate-500 mt-1">
+                                    Please share your details below and our specialists will reach out promptly.
+                                </p>
+                            </div>
+
+                            {/* Success Notification */}
+                            {isSubmitted && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: -10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="mb-4 p-3.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs sm:text-sm font-medium flex items-center gap-2"
+                                >
+                                    <svg className="w-5 h-5 text-emerald-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                                    </svg>
+                                    <span>Thank you! Your enquiry has been sent successfully. We will get in touch shortly.</span>
+                                </motion.div>
+                            )}
+
+                            {/* Enquiry Form */}
+                            <form onSubmit={handleFormSubmit} className="space-y-3.5">
+                                {/* Row 1: Full Name & Company Name */}
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    {/* Full Name */}
+                                    <div className="relative">
+                                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                            </svg>
+                                        </div>
+                                        <input
+                                            type="text"
+                                            name="fullName"
+                                            required
+                                            value={formData.fullName}
+                                            onChange={handleInputChange}
+                                            placeholder="Full Name *"
+                                            className="w-full pl-9 pr-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-[13px] placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0052ff]/20 focus:border-[#0052ff] transition-all bg-white text-slate-800"
+                                        />
+                                    </div>
+
+                                    {/* Company Name */}
+                                    <div className="relative">
+                                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                            </svg>
+                                        </div>
+                                        <input
+                                            type="text"
+                                            name="companyName"
+                                            value={formData.companyName}
+                                            onChange={handleInputChange}
+                                            placeholder="Company Name"
+                                            className="w-full pl-9 pr-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-[13px] placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0052ff]/20 focus:border-[#0052ff] transition-all bg-white text-slate-800"
+                                        />
+                                    </div>
+                                </div>
+
+                                {/* Row 2: Email & Phone Number */}
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    {/* Email */}
+                                    <div className="relative">
+                                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                            </svg>
+                                        </div>
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            required
+                                            value={formData.email}
+                                            onChange={handleInputChange}
+                                            placeholder="Email Address *"
+                                            className="w-full pl-9 pr-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-[13px] placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0052ff]/20 focus:border-[#0052ff] transition-all bg-white text-slate-800"
+                                        />
+                                    </div>
+
+                                    {/* Phone Number */}
+                                    <div className="relative">
+                                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                            </svg>
+                                        </div>
+                                        <input
+                                            type="tel"
+                                            name="phone"
+                                            required
+                                            value={formData.phone}
+                                            onChange={handleInputChange}
+                                            placeholder="Phone Number *"
+                                            className="w-full pl-9 pr-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-[13px] placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0052ff]/20 focus:border-[#0052ff] transition-all bg-white text-slate-800"
+                                        />
+                                    </div>
+                                </div>
+
+                                {/* Row 3: Interested Service Dropdown */}
+                                <div className="relative">
+                                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                                        </svg>
+                                    </div>
+                                    <select
+                                        name="service"
+                                        required
+                                        value={formData.service}
+                                        onChange={handleInputChange}
+                                        className="w-full pl-9 pr-8 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-[13px] text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#0052ff]/20 focus:border-[#0052ff] transition-all bg-white appearance-none cursor-pointer"
+                                    >
+                                        <option value="" disabled>Select Service *</option>
+                                        <option value="Odoo ERP Implementation, Customization & Support">Odoo ERP Implementation, Customization & Support</option>
+                                        <option value="Zoho Software Implementation & Customization">Zoho Software Implementation & Customization</option>
+                                        <option value="Tally Implementation & Support">Tally Implementation & Support</option>
+                                        <option value="AI Solutions & Process Automation">AI Solutions & Process Automation</option>
+                                        <option value="Software Integration & Data Migration">Software Integration & Data Migration</option>
+                                        <option value="Other Inquiries">Other Inquiries</option>
+                                    </select>
+                                    <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-slate-400">
+                                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                {/* Row 4: Message / Description */}
+                                <div className="relative">
+                                    <div className="absolute top-3 left-3 pointer-events-none text-slate-400">
+                                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                                        </svg>
+                                    </div>
+                                    <textarea
+                                        name="message"
+                                        rows={3}
+                                        required
+                                        value={formData.message}
+                                        onChange={handleInputChange}
+                                        placeholder="Message / Description of requirements *"
+                                        className="w-full pl-9 pr-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-[13px] placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0052ff]/20 focus:border-[#0052ff] transition-all bg-white resize-none text-slate-800"
+                                    />
+                                </div>
+
+                                {/* Action Buttons */}
+                                <div className="flex items-center justify-end gap-2.5 pt-2">
+                                    <button
+                                        type="button"
+                                        onClick={closeEnquiryModal}
+                                        className="px-4 py-2.5 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700 font-semibold text-xs transition-colors cursor-pointer"
+                                    >
+                                        Cancel
+                                    </button>
+                                    <button
+                                        type="submit"
+                                        className="px-6 py-2.5 rounded-xl bg-[#0052ff] hover:bg-[#0047db] active:bg-[#003cb8] text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-1.5 shadow-md shadow-[#0052ff]/20 hover:shadow-lg hover:shadow-[#0052ff]/30 transition-all cursor-pointer"
+                                    >
+                                        <span>Submit Enquiry</span>
+                                        <span>&rarr;</span>
+                                    </button>
+                                </div>
+                            </form>
+                        </motion.div>
+                    </div>
+                )}
+            </AnimatePresence>
 
         </div>
     );

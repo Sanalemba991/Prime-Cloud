@@ -1,6 +1,4 @@
 import React from "react";
-import Navbar from "../component/Navbar";
-import Footer from "../component/Footer";
 import Contact from "./Contact";
 
 export const metadata = {
@@ -11,10 +9,8 @@ export const metadata = {
 
 export default function ContactPage() {
     return (
-        <main className="min-h-screen bg-[#f8fbff]">
-
+        <div className="w-full bg-[#f8fbff]">
             <Contact />
-
-        </main>
+        </div>
     );
 }

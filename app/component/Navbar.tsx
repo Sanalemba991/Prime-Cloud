@@ -13,6 +13,18 @@ export default function Navbar() {
     const isAbout = pathname === "/about" || pathname.startsWith("/about");
     const isContact = pathname === "/contact" || pathname.startsWith("/contact");
 
+    const handleServiceClick = (e: React.MouseEvent<HTMLAnchorElement>, hash: string) => {
+        if (pathname === "/services") {
+            // Already on services page: smoothly update URL & trigger smooth scroll to the target
+            e.preventDefault();
+            window.location.hash = hash;
+        } else {
+            // On a different page: full navigation / reload straight to /services#target
+            e.preventDefault();
+            window.location.href = `/services#${hash}`;
+        }
+    };
+
     return (
         <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-slate-100/80 select-none">
             <div className="max-w-[1240px] mx-auto px-5 sm:px-8 lg:px-10 h-20 flex items-center justify-between">
@@ -144,6 +156,7 @@ export default function Navbar() {
                                     {/* Odoo ERP */}
                                     <Link
                                         href="/services#odoo"
+                                        onClick={(e) => handleServiceClick(e, "odoo")}
                                         className="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 transition-colors group/item"
                                     >
                                         <div className="flex items-center gap-2.5">
@@ -178,6 +191,7 @@ export default function Navbar() {
                                     {/* Zoho Software */}
                                     <Link
                                         href="/services#zoho"
+                                        onClick={(e) => handleServiceClick(e, "zoho")}
                                         className="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 transition-colors group/item"
                                     >
                                         <div className="flex items-center gap-2.5">
@@ -211,6 +225,7 @@ export default function Navbar() {
                                     {/* Tally */}
                                     <Link
                                         href="/services#tally"
+                                        onClick={(e) => handleServiceClick(e, "tally")}
                                         className="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 transition-colors group/item"
                                     >
                                         <div className="flex items-center gap-2.5">
@@ -243,6 +258,7 @@ export default function Navbar() {
                                     {/* AI Solutions */}
                                     <Link
                                         href="/services#ai"
+                                        onClick={(e) => handleServiceClick(e, "ai")}
                                         className="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 transition-colors group/item"
                                     >
                                         <div className="flex items-center gap-2.5">
@@ -277,6 +293,7 @@ export default function Navbar() {
                                     {/* Integration & Consulting */}
                                     <Link
                                         href="/services#integration"
+                                        onClick={(e) => handleServiceClick(e, "integration")}
                                         className="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 transition-colors group/item"
                                     >
                                         <div className="flex items-center gap-2.5">

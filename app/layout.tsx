@@ -16,10 +16,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="h-full antialiased">
-      <Navbar />
-
-      <body className="min-h-full flex flex-col font-sans">{children}</body>
-      <Footer />
+      <body className="min-h-full flex flex-col font-sans">
+        <Navbar />
+        <main className="flex-1">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }

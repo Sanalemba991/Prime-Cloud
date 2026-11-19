@@ -1,6 +1,4 @@
 import React from "react";
-import Navbar from "../component/Navbar";
-import Footer from "../component/Footer";
 import About from "./About";
 
 export const metadata = {
@@ -11,8 +9,8 @@ export const metadata = {
 
 export default function AboutPage() {
     return (
-        <main className="min-h-screen bg-white">
+        <div className="w-full bg-white">
             <About />
-        </main>
+        </div>
     );
 }
