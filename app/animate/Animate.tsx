@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Canvas } from "@react-three/fiber";
@@ -6,14 +5,11 @@ import { OrbitControls } from "@react-three/drei";
 
 function Cube() {
     return (
-        <mesh
-            rotation={[0.5, 0.5, 0]}
-            scale={2}
-        >
+        <mesh>
             <boxGeometry args={[2, 2, 2]} />
             <meshStandardMaterial
                 color="#2563eb"
-                roughness={0.4}
+                roughness={0.3}
                 metalness={0.2}
             />
         </mesh>
@@ -22,26 +18,24 @@ function Cube() {
 
 export default function Animate() {
     return (
-        <div className="h-screen w-full">
-            <Canvas camera={{ position: [0, 0, 10], fov: 50 }}>
-                <ambientLight intensity={0.8} />
+        <div className="h-screen w-full bg-[repeating-conic-gradient(#ffffff_0%_25%,#e5e5e5_0%_50%)] [background-size:40px_40px]">
 
-                <directionalLight
-                    position={[5, 5, 5]}
-                    intensity={2}
+            <Canvas shadows camera={{ position: [5, 4, 8] }}>
+
+                <ambientLight intensity={0.5} />
+
+                <spotLight
+                    position={[3, 5, 5]}
+                    intensity={100}
+                    angle={0.5}
+                    penumbra={0.5}
                 />
 
-                <pointLight
-                    position={[-3, 2, 3]}
-                    intensity={1.5}
-                />
 
                 <Cube />
 
-                <OrbitControls
-                    enableDamping
-                    dampingFactor={0.05}
-                />
+                <OrbitControls />
+
             </Canvas>
         </div>
     );
