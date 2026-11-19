@@ -297,47 +297,7 @@ export default function Digital() {
                 </div>
 
                 {/* Bottom Trust Indicators / Social Proof Row */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 pt-4">
-                    <div className="bg-white rounded-2xl p-4 border border-slate-100 shadow-2xs flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#0052ff] flex items-center justify-center shrink-0">
-                            <span className="font-black text-sm">99%</span>
-                        </div>
-                        <div>
-                            <div className="text-xs sm:text-[13px] font-bold text-slate-900 leading-tight">Satisfaction</div>
-                            <div className="text-[11px] text-slate-500 mt-0.5">Across all client reviews</div>
-                        </div>
-                    </div>
 
-                    <div className="bg-white rounded-2xl p-4 border border-slate-100 shadow-2xs flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#0052ff] flex items-center justify-center shrink-0">
-                            <span className="font-black text-sm">100+</span>
-                        </div>
-                        <div>
-                            <div className="text-xs sm:text-[13px] font-bold text-slate-900 leading-tight">Projects Delivered</div>
-                            <div className="text-[11px] text-slate-500 mt-0.5">On time &amp; within budget</div>
-                        </div>
-                    </div>
-
-                    <div className="bg-white rounded-2xl p-4 border border-slate-100 shadow-2xs flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#0052ff] flex items-center justify-center shrink-0">
-                            <span className="font-black text-sm">5★</span>
-                        </div>
-                        <div>
-                            <div className="text-xs sm:text-[13px] font-bold text-slate-900 leading-tight">Expert Support</div>
-                            <div className="text-[11px] text-slate-500 mt-0.5">Dedicated SLA &amp; maintenance</div>
-                        </div>
-                    </div>
-
-                    <div className="bg-white rounded-2xl p-4 border border-slate-100 shadow-2xs flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#0052ff] flex items-center justify-center shrink-0">
-                            <span className="font-black text-sm">0%</span>
-                        </div>
-                        <div>
-                            <div className="text-xs sm:text-[13px] font-bold text-slate-900 leading-tight">Data Loss</div>
-                            <div className="text-[11px] text-slate-500 mt-0.5">Seamless system migrations</div>
-                        </div>
-                    </div>
-                </div>
 
             </div>
         </section>

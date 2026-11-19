@@ -308,10 +308,10 @@ export default function Services() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: false, amount: 0.2 }}
                             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                            className="group relative bg-[#fbfcfe] rounded-2xl border border-slate-200/90 p-6 sm:p-7 hover:shadow-xl transition-all duration-300 hover:border-blue-200 flex flex-col justify-between overflow-hidden min-h-[260px] sm:min-h-[275px] scroll-mt-28"
+                            className="group relative bg-[#fbfcfe] rounded-2xl border border-slate-200/90 p-5 sm:p-7 hover:shadow-xl transition-all duration-300 hover:border-blue-200 flex flex-col justify-between overflow-hidden min-h-[260px] sm:min-h-[275px] scroll-mt-28"
                         >
                             {/* Card Background Image */}
-                            <div className="absolute inset-0 w-full h-full pointer-events-none select-none overflow-hidden">
+                            <div className="absolute inset-0 w-full h-full pointer-events-none select-none overflow-hidden opacity-30 sm:opacity-100">
                                 <Image
                                     src="/service/odoo.png"
                                     alt="Odoo Service Background"
@@ -320,7 +320,7 @@ export default function Services() {
                                 />
                             </div>
 
-                            <div className="relative z-10 max-w-[53%] flex flex-col justify-between h-full">
+                            <div className="relative z-10 w-full sm:max-w-[65%] md:max-w-[58%] lg:max-w-[53%] flex flex-col justify-between h-full bg-white/70 sm:bg-transparent backdrop-blur-[2px] sm:backdrop-blur-none p-3 sm:p-0 rounded-xl sm:rounded-none">
                                 <div>
                                     <div className="w-8 h-8 rounded-lg border border-blue-200 bg-white/95 backdrop-blur-xs text-[#0052ff] flex items-center justify-center font-bold text-xs mb-2.5 shadow-2xs">
                                         01
@@ -368,10 +368,10 @@ export default function Services() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: false, amount: 0.2 }}
                             transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-                            className="group relative bg-[#fbfcfe] rounded-2xl border border-slate-200/90 p-6 sm:p-7 hover:shadow-xl transition-all duration-300 hover:border-blue-200 flex flex-col justify-between overflow-hidden min-h-[260px] sm:min-h-[275px] scroll-mt-28"
+                            className="group relative bg-[#fbfcfe] rounded-2xl border border-slate-200/90 p-5 sm:p-7 hover:shadow-xl transition-all duration-300 hover:border-blue-200 flex flex-col justify-between overflow-hidden min-h-[260px] sm:min-h-[275px] scroll-mt-28"
                         >
                             {/* Card Background Image */}
-                            <div className="absolute inset-0 w-full h-full pointer-events-none select-none overflow-hidden">
+                            <div className="absolute inset-0 w-full h-full pointer-events-none select-none overflow-hidden opacity-30 sm:opacity-100">
                                 <Image
                                     src="/service/zoho.png"
                                     alt="Zoho Service Background"
@@ -380,7 +380,7 @@ export default function Services() {
                                 />
                             </div>
 
-                            <div className="relative z-10 max-w-[53%] flex flex-col justify-between h-full">
+                            <div className="relative z-10 w-full sm:max-w-[65%] md:max-w-[58%] lg:max-w-[53%] flex flex-col justify-between h-full bg-white/70 sm:bg-transparent backdrop-blur-[2px] sm:backdrop-blur-none p-3 sm:p-0 rounded-xl sm:rounded-none">
                                 <div>
                                     <div className="w-8 h-8 rounded-lg border border-blue-200 bg-white/95 backdrop-blur-xs text-[#0052ff] flex items-center justify-center font-bold text-xs mb-2.5 shadow-2xs">
                                         02
@@ -437,7 +437,7 @@ export default function Services() {
                             className="group relative bg-[#fbfcfe] rounded-2xl border border-slate-200/90 p-5 sm:p-6 hover:shadow-xl transition-all duration-300 hover:border-blue-200 flex flex-col justify-between overflow-hidden min-h-[250px] sm:min-h-[265px] scroll-mt-28"
                         >
                             {/* Card Background Image */}
-                            <div className="absolute inset-0 w-full h-full pointer-events-none select-none overflow-hidden">
+                            <div className="absolute inset-0 w-full h-full pointer-events-none select-none overflow-hidden opacity-30 sm:opacity-100">
                                 <Image
                                     src="/service/tallly.png"
                                     alt="Tally Service Background"
@@ -446,7 +446,7 @@ export default function Services() {
                                 />
                             </div>
 
-                            <div className="relative z-10 max-w-[58%] flex flex-col justify-between h-full">
+                            <div className="relative z-10 w-full sm:max-w-[70%] md:max-w-[62%] lg:max-w-[58%] flex flex-col justify-between h-full bg-white/70 sm:bg-transparent backdrop-blur-[2px] sm:backdrop-blur-none p-2 sm:p-0 rounded-xl sm:rounded-none">
                                 <div>
                                     <div className="w-7 h-7 rounded-md border border-blue-200 bg-white/95 backdrop-blur-xs text-[#0052ff] flex items-center justify-center font-bold text-[11px] mb-2 shadow-2xs">
                                         03
@@ -496,7 +496,7 @@ export default function Services() {
                             className="group relative bg-[#fbfcfe] rounded-2xl border border-slate-200/90 p-5 sm:p-6 hover:shadow-xl transition-all duration-300 hover:border-blue-200 flex flex-col justify-between overflow-hidden min-h-[250px] sm:min-h-[265px] scroll-mt-28"
                         >
                             {/* Card Background Image */}
-                            <div className="absolute inset-0 w-full h-full pointer-events-none select-none overflow-hidden">
+                            <div className="absolute inset-0 w-full h-full pointer-events-none select-none overflow-hidden opacity-30 sm:opacity-100">
                                 <Image
                                     src="/service/AII.png"
                                     alt="AI Solutions Background"
@@ -505,7 +505,7 @@ export default function Services() {
                                 />
                             </div>
 
-                            <div className="relative z-10 max-w-[58%] flex flex-col justify-between h-full">
+                            <div className="relative z-10 w-full sm:max-w-[70%] md:max-w-[62%] lg:max-w-[58%] flex flex-col justify-between h-full bg-white/70 sm:bg-transparent backdrop-blur-[2px] sm:backdrop-blur-none p-2 sm:p-0 rounded-xl sm:rounded-none">
                                 <div>
                                     <div className="w-7 h-7 rounded-md border border-blue-200 bg-white/95 backdrop-blur-xs text-[#0052ff] flex items-center justify-center font-bold text-[11px] mb-2 shadow-2xs">
                                         04
@@ -556,7 +556,7 @@ export default function Services() {
                             className="group relative bg-[#fbfcfe] rounded-2xl border border-slate-200/90 p-5 sm:p-6 hover:shadow-xl transition-all duration-300 hover:border-blue-200 flex flex-col justify-between overflow-hidden min-h-[250px] sm:min-h-[265px] scroll-mt-28"
                         >
                             {/* Card Background Image */}
-                            <div className="absolute inset-0 w-full h-full pointer-events-none select-none overflow-hidden">
+                            <div className="absolute inset-0 w-full h-full pointer-events-none select-none overflow-hidden opacity-30 sm:opacity-100">
                                 <Image
                                     src="/service/clo.png"
                                     alt="Software Integration Background"
@@ -565,7 +565,7 @@ export default function Services() {
                                 />
                             </div>
 
-                            <div className="relative z-10 max-w-[58%] flex flex-col justify-between h-full">
+                            <div className="relative z-10 w-full sm:max-w-[70%] md:max-w-[62%] lg:max-w-[58%] flex flex-col justify-between h-full bg-white/70 sm:bg-transparent backdrop-blur-[2px] sm:backdrop-blur-none p-2 sm:p-0 rounded-xl sm:rounded-none">
                                 <div>
                                     <div className="w-7 h-7 rounded-md border border-blue-200 bg-white/95 backdrop-blur-xs text-[#0052ff] flex items-center justify-center font-bold text-[11px] mb-2 shadow-2xs">
                                         05
@@ -623,7 +623,7 @@ export default function Services() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: false, amount: 0.2 }}
                         transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-                        className="relative w-full  overflow-hidden rounded-lg min-h-[220px] sm:min-h-[240px] lg:min-h-[260px] flex items-center p-6 sm:p-8 lg:p-10"
+                        className="relative w-full overflow-hidden rounded-2xl min-h-[220px] sm:min-h-[240px] lg:min-h-[260px] flex items-center p-5 sm:p-8 lg:p-10"
                     >
                         {/* Background Image of the Section */}
                         <div className="absolute inset-0 w-full h-full pointer-events-none select-none overflow-hidden">
@@ -636,8 +636,8 @@ export default function Services() {
                             />
                         </div>
 
-                        {/* Content Overlay on the Right Half of the Banner */}
-                        <div className="relative z-10 w-full lg:w-[56%] xl:w-[52%] ml-auto flex flex-col justify-center pl-0 sm:pl-4 lg:pl-6 pr-2 sm:pr-4">
+                        {/* Content Overlay */}
+                        <div className="relative z-10 w-full lg:w-[56%] xl:w-[52%] ml-auto flex flex-col justify-center pl-0 sm:pl-4 lg:pl-6 pr-0 sm:pr-4 bg-white/75 lg:bg-transparent backdrop-blur-[2px] lg:backdrop-blur-none p-4 sm:p-0 rounded-xl lg:rounded-none">
                             <h2 className="text-xl sm:text-2xl lg:text-[24px] font-black text-[#0b132b] tracking-tight mb-1.5 leading-snug">
                                 Why Choose Prime Cloud?
                             </h2>
@@ -645,10 +645,10 @@ export default function Services() {
                                 We go beyond implementation — we build long-term partnerships with our clients.
                             </p>
 
-                            {/* 4 Feature Items in a Row with Dividers */}
-                            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-2 pt-1.5">
+                            {/* 4 Feature Items in a Grid */}
+                            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5 sm:gap-2 pt-1.5">
                                 {/* Item 1 */}
-                                <div className="flex flex-col items-start pr-2">
+                                <div className="flex flex-col items-start pr-1 sm:pr-2">
                                     <div className="w-8 h-8 rounded-lg bg-blue-50 text-[#0052ff] flex items-center justify-center mb-2">
                                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -744,7 +744,7 @@ export default function Services() {
                             </div>
 
                             {/* Right Column: 4 Process Steps in a Flow with Chevron Arrows */}
-                            <div className="lg:col-span-8 xl:col-span-8 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-1.5 items-start">
+                            <div className="lg:col-span-8 xl:col-span-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-4 lg:gap-1.5 items-start">
 
                                 {/* Step 1: Discover */}
                                 <div className="relative flex flex-col items-start pr-2 sm:pr-3">
@@ -762,7 +762,7 @@ export default function Services() {
                                     </p>
 
                                     {/* Arrow for desktop */}
-                                    <div className="hidden sm:flex absolute right-0 top-1/3 -translate-y-1/2 text-slate-300">
+                                    <div className="hidden lg:flex absolute right-0 top-1/3 -translate-y-1/2 text-slate-300">
                                         <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                                         </svg>
@@ -785,7 +785,7 @@ export default function Services() {
                                     </p>
 
                                     {/* Arrow for desktop */}
-                                    <div className="hidden sm:flex absolute right-0 top-1/3 -translate-y-1/2 text-slate-300">
+                                    <div className="hidden lg:flex absolute right-0 top-1/3 -translate-y-1/2 text-slate-300">
                                         <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                                         </svg>
@@ -808,7 +808,7 @@ export default function Services() {
                                     </p>
 
                                     {/* Arrow for desktop */}
-                                    <div className="hidden sm:flex absolute right-0 top-1/3 -translate-y-1/2 text-slate-300">
+                                    <div className="hidden lg:flex absolute right-0 top-1/3 -translate-y-1/2 text-slate-300">
                                         <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                                         </svg>

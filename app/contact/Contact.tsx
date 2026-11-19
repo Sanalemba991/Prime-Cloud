@@ -409,30 +409,30 @@ export default function Contact() {
                         <img
                             src="/contact/dubai.png"
                             alt="Dubai Skyline"
-                            className="w-full h-full object-cover object-left sm:object-center"
+                            className="w-full h-full object-cover object-center"
                         />
-                        {/* Gradient transition into deep brand blue on the right */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#092b6b]/85 to-[#051c48]" />
+                        {/* Gradient transition into deep brand blue on the right / mobile full overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-[#092b6b]/90 via-[#092b6b]/95 to-[#051c48] sm:from-transparent sm:via-[#092b6b]/85 sm:to-[#051c48]" />
                     </div>
 
                     {/* Content inside Dubai banner */}
-                    <div className="relative z-10 w-full p-6 sm:p-8 flex items-center justify-end">
-                        <div className="flex flex-col items-start text-left text-white max-w-[280px]">
+                    <div className="relative z-10 w-full p-5 sm:p-8 flex items-center justify-start sm:justify-end">
+                        <div className="flex flex-col items-start text-left text-white max-w-full sm:max-w-[280px]">
                             {/* Pin icon + Our Office */}
                             <div className="flex items-center gap-2 mb-2">
-                                <svg className="w-6 h-6 text-white shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                                <svg className="w-5 sm:w-6 h-5 sm:h-6 text-white shrink-0" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z" />
                                 </svg>
-                                <h3 className="text-xl sm:text-2xl font-black tracking-tight text-white leading-none">
+                                <h3 className="text-lg sm:text-2xl font-black tracking-tight text-white leading-none">
                                     Our Office
                                 </h3>
                             </div>
 
                             {/* Details */}
-                            <p className="text-[13.5px] font-semibold text-white/95 leading-snug">
+                            <p className="text-[13px] sm:text-[13.5px] font-semibold text-white/95 leading-snug">
                                 Prime Cloud Solutions LLC
                             </p>
-                            <p className="text-[12px] text-white/80 mb-3.5 leading-snug">
+                            <p className="text-[11.5px] sm:text-[12px] text-white/80 mb-3 sm:mb-3.5 leading-snug">
                                 Dubai, United Arab Emirates
                             </p>
 
@@ -441,7 +441,7 @@ export default function Contact() {
                                 href="https://maps.google.com"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full bg-white text-[#0a1128] hover:bg-slate-100 text-[11.5px] font-bold transition-all shadow-md group"
+                                className="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2 rounded-full bg-white text-[#0a1128] hover:bg-slate-100 text-[11px] sm:text-[11.5px] font-bold transition-all shadow-md group"
                             >
                                 <span>View on Google Maps</span>
                                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>

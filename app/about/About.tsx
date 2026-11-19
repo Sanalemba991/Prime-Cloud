@@ -121,7 +121,7 @@ export default function About() {
             {/* ================= 2. STATS BAR WITH DIVIDERS ================= */}
             <section className="w-full bg-white py-6 sm:py-8 lg:py-10 select-none">
                 <div className="max-w-[1240px] mx-auto px-5 sm:px-8 lg:px-10">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0 items-center">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-0 items-center">
 
                         {/* Stat 1: 100+ Projects Delivered */}
                         <motion.div
@@ -129,10 +129,10 @@ export default function About() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: false, amount: 0.2 }}
                             transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-                            className="flex items-center justify-center gap-4 sm:gap-4.5 md:pr-4 lg:pr-6"
+                            className="flex items-center justify-start sm:justify-center gap-3 sm:gap-4.5 md:pr-4 lg:pr-6"
                         >
                             <svg
-                                className="w-9 h-9 sm:w-10 sm:h-10 text-[#0052ff] shrink-0"
+                                className="w-8 h-8 sm:w-10 sm:h-10 text-[#0052ff] shrink-0"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"
@@ -144,10 +144,10 @@ export default function About() {
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 9l5-5m0 0h-3.5m3.5 0v3.5" />
                             </svg>
                             <div>
-                                <div className="text-2xl sm:text-[28px] font-black text-[#0a1128] leading-none mb-1 tracking-tight">
+                                <div className="text-xl sm:text-2xl lg:text-[28px] font-black text-[#0a1128] leading-none mb-1 tracking-tight">
                                     <Counter value={100} suffix="+" duration={2.2} />
                                 </div>
-                                <div className="text-[12px] sm:text-[13px] text-slate-500 font-medium tracking-tight whitespace-nowrap">
+                                <div className="text-[11px] sm:text-[12px] lg:text-[13px] text-slate-500 font-medium tracking-tight">
                                     Projects Delivered
                                 </div>
                             </div>
@@ -159,10 +159,10 @@ export default function About() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: false, amount: 0.2 }}
                             transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                            className="flex items-center justify-center gap-4 sm:gap-4.5 md:border-l md:border-slate-200/80 md:px-4 lg:px-6"
+                            className="flex items-center justify-start sm:justify-center gap-3 sm:gap-4.5 md:border-l md:border-slate-200/80 md:px-4 lg:px-6"
                         >
                             <svg
-                                className="w-9 h-9 sm:w-10 sm:h-10 text-[#0052ff] shrink-0"
+                                className="w-8 h-8 sm:w-10 sm:h-10 text-[#0052ff] shrink-0"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"
@@ -176,10 +176,10 @@ export default function About() {
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M17.5 16a4 4 0 014 3" />
                             </svg>
                             <div>
-                                <div className="text-2xl sm:text-[28px] font-black text-[#0a1128] leading-none mb-1 tracking-tight">
+                                <div className="text-xl sm:text-2xl lg:text-[28px] font-black text-[#0a1128] leading-none mb-1 tracking-tight">
                                     <Counter value={50} suffix="+" duration={2.0} />
                                 </div>
-                                <div className="text-[12px] sm:text-[13px] text-slate-500 font-medium tracking-tight whitespace-nowrap">
+                                <div className="text-[11px] sm:text-[12px] lg:text-[13px] text-slate-500 font-medium tracking-tight">
                                     Happy Clients
                                 </div>
                             </div>
@@ -191,10 +191,10 @@ export default function About() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: false, amount: 0.2 }}
                             transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                            className="flex items-center justify-center gap-4 sm:gap-4.5 md:border-l md:border-slate-200/80 md:px-4 lg:px-6"
+                            className="flex items-center justify-start sm:justify-center gap-3 sm:gap-4.5 md:border-l md:border-slate-200/80 md:px-4 lg:px-6"
                         >
                             <svg
-                                className="w-9 h-9 sm:w-10 sm:h-10 text-[#0052ff] shrink-0"
+                                className="w-8 h-8 sm:w-10 sm:h-10 text-[#0052ff] shrink-0"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"
@@ -203,10 +203,10 @@ export default function About() {
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
                             </svg>
                             <div>
-                                <div className="text-2xl sm:text-[28px] font-black text-[#0a1128] leading-none mb-1 tracking-tight">
+                                <div className="text-xl sm:text-2xl lg:text-[28px] font-black text-[#0a1128] leading-none mb-1 tracking-tight">
                                     <Counter value={5} suffix="+" duration={1.6} />
                                 </div>
-                                <div className="text-[12px] sm:text-[13px] text-slate-500 font-medium tracking-tight whitespace-nowrap">
+                                <div className="text-[11px] sm:text-[12px] lg:text-[13px] text-slate-500 font-medium tracking-tight">
                                     Industries Served
                                 </div>
                             </div>
@@ -218,10 +218,10 @@ export default function About() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: false, amount: 0.2 }}
                             transition={{ duration: 0.9, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                            className="flex items-center justify-center gap-4 sm:gap-4.5 md:border-l md:border-slate-200/80 md:pl-4 lg:pl-6"
+                            className="flex items-center justify-start sm:justify-center gap-3 sm:gap-4.5 md:border-l md:border-slate-200/80 md:pl-4 lg:pl-6"
                         >
                             <svg
-                                className="w-9 h-9 sm:w-10 sm:h-10 text-[#0052ff] shrink-0"
+                                className="w-8 h-8 sm:w-10 sm:h-10 text-[#0052ff] shrink-0"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"
@@ -231,10 +231,10 @@ export default function About() {
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4" />
                             </svg>
                             <div>
-                                <div className="text-2xl sm:text-[28px] font-black text-[#0a1128] leading-none mb-1 tracking-tight">
+                                <div className="text-xl sm:text-2xl lg:text-[28px] font-black text-[#0a1128] leading-none mb-1 tracking-tight">
                                     <Counter value={99} suffix="%" duration={2.2} />
                                 </div>
-                                <div className="text-[12px] sm:text-[13px] text-slate-500 font-medium tracking-tight whitespace-nowrap">
+                                <div className="text-[11px] sm:text-[12px] lg:text-[13px] text-slate-500 font-medium tracking-tight">
                                     Client Satisfaction
                                 </div>
                             </div>
@@ -432,7 +432,7 @@ export default function About() {
                     </div>
 
                     {/* 5 Capability Items in Row with Vertical Dividers */}
-                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 items-start gap-y-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 items-center sm:items-start gap-y-8 gap-x-4">
 
                         {/* 1. ERP Implementation */}
                         <motion.div
@@ -516,7 +516,7 @@ export default function About() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: false, amount: 0.2 }}
                             transition={{ duration: 1.0, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                            className="flex flex-col items-center text-center px-3 sm:px-4 lg:border-l lg:border-slate-200/70 col-span-2 sm:col-span-1"
+                            className="flex flex-col items-center text-center px-3 sm:px-4 lg:border-l lg:border-slate-200/70 sm:col-span-2 lg:col-span-1"
                         >
                             <div className="w-16 h-16 rounded-2xl bg-[#edf4ff] text-[#0052ff] flex items-center justify-center mb-4 transition-transform hover:scale-105 duration-200">
                                 <svg className="w-7 h-7 text-[#0052ff]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>

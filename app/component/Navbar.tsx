@@ -7,22 +7,28 @@ import { usePathname } from "next/navigation";
 
 export default function Navbar() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [dropdownOpen, setDropdownOpen] = useState(false);
     const pathname = usePathname();
 
     const isHome = pathname === "/";
     const isAbout = pathname === "/about" || pathname.startsWith("/about");
     const isContact = pathname === "/contact" || pathname.startsWith("/contact");
 
+    // Force full page navigation/reload and close any open menus
+    const navigateWithReload = (url: string) => {
+        setDropdownOpen(false);
+        setMobileMenuOpen(false);
+        window.location.href = url;
+    };
+
+    const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+        e.preventDefault();
+        navigateWithReload(href);
+    };
+
     const handleServiceClick = (e: React.MouseEvent<HTMLAnchorElement>, hash: string) => {
-        if (pathname === "/services") {
-            // Already on services page: smoothly update URL & trigger smooth scroll to the target
-            e.preventDefault();
-            window.location.hash = hash;
-        } else {
-            // On a different page: full navigation / reload straight to /services#target
-            e.preventDefault();
-            window.location.href = `/services#${hash}`;
-        }
+        e.preventDefault();
+        navigateWithReload(`/services#${hash}`);
     };
 
     return (
@@ -30,7 +36,11 @@ export default function Navbar() {
             <div className="max-w-[1240px] mx-auto px-5 sm:px-8 lg:px-10 h-20 flex items-center justify-between">
 
                 {/* Left: Brand Logo (Pure SVG + Typography, No Image) */}
-                <Link href="/" className="flex items-center gap-2.5 group">
+                <Link
+                    href="/"
+                    onClick={(e) => handleLinkClick(e, "/")}
+                    className="flex items-center gap-2.5 group"
+                >
                     {/* Pure SVG Prime Cloud "P" Logo */}
                     <div className="w-9 h-9 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
                         <svg
@@ -72,6 +82,7 @@ export default function Navbar() {
                     {/* Home */}
                     <Link
                         href="/"
+                        onClick={(e) => handleLinkClick(e, "/")}
                         className={`relative text-[14px] py-1 transition-colors flex flex-col items-center ${isHome
                             ? "font-bold text-[#0052ff]"
                             : "font-semibold text-slate-700 hover:text-[#0052ff]"
@@ -86,6 +97,7 @@ export default function Navbar() {
                     {/* About */}
                     <Link
                         href="/about"
+                        onClick={(e) => handleLinkClick(e, "/about")}
                         className={`relative text-[14px] py-1 transition-colors flex flex-col items-center ${isAbout
                             ? "font-bold text-[#0052ff]"
                             : "font-semibold text-slate-700 hover:text-[#0052ff]"
@@ -98,9 +110,14 @@ export default function Navbar() {
                     </Link>
 
                     {/* Services (Dropdown) */}
-                    <div className="relative group/menu py-2">
+                    <div
+                        className="relative group/menu py-2"
+                        onMouseEnter={() => setDropdownOpen(true)}
+                        onMouseLeave={() => setDropdownOpen(false)}
+                    >
                         <Link
                             href="/services"
+                            onClick={(e) => handleLinkClick(e, "/services")}
                             className={`px-3 py-1.5 rounded-full text-[14px] font-semibold flex items-center gap-1.5 transition-all duration-200 ${pathname.startsWith("/services")
                                 ? "bg-blue-50 text-[#0052ff]"
                                 : "text-slate-700 hover:text-[#0052ff] group-hover/menu:bg-blue-50/70 group-hover/menu:text-[#0052ff]"
@@ -108,7 +125,7 @@ export default function Navbar() {
                         >
                             <span>Services</span>
                             <svg
-                                className="w-3.5 h-3.5 text-slate-400 group-hover/menu:text-[#0052ff] group-hover/menu:rotate-180 transition-transform duration-200"
+                                className={`w-3.5 h-3.5 text-slate-400 group-hover/menu:text-[#0052ff] transition-transform duration-200 ${dropdownOpen ? "rotate-180 text-[#0052ff]" : ""}`}
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"
@@ -119,7 +136,7 @@ export default function Navbar() {
                         </Link>
 
                         {/* Mega Menu Dropdown */}
-                        <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 w-[940px] xl:w-[960px] opacity-0 invisible group-hover/menu:opacity-100 group-hover/menu:visible transition-all duration-200 pointer-events-none group-hover/menu:pointer-events-auto z-50">
+                        <div className={`absolute top-full left-1/2 -translate-x-1/2 pt-3 w-[940px] xl:w-[960px] transition-all duration-200 z-50 ${dropdownOpen ? "opacity-100 visible pointer-events-auto" : "opacity-0 invisible pointer-events-none"}`}>
 
                             {/* Pointed Triangle Indicator on Top */}
                             <div className="w-4 h-4 bg-white rotate-45 border-t border-l border-slate-100/90 shadow-[-2px_-2px_4px_rgba(0,0,0,0.02)] mx-auto -mb-2 relative z-10" />
@@ -408,6 +425,7 @@ export default function Navbar() {
                     {/* Contact */}
                     <Link
                         href="/contact"
+                        onClick={(e) => handleLinkClick(e, "/contact")}
                         className={`relative text-[14px] py-1 transition-colors flex flex-col items-center ${isContact
                             ? "font-bold text-[#0052ff]"
                             : "font-semibold text-slate-700 hover:text-[#0052ff]"
@@ -424,6 +442,7 @@ export default function Navbar() {
                 <div className="flex items-center gap-3">
                     <Link
                         href="/contact"
+                        onClick={(e) => handleLinkClick(e, "/contact")}
                         className="hidden sm:inline-flex items-center gap-2 bg-[#0052ff] hover:bg-[#0047db] text-white font-semibold px-5 sm:px-6 py-2.5 rounded-full text-xs sm:text-[13px] shadow-[0_4px_16px_rgba(0,82,255,0.28)] hover:shadow-[0_6px_20px_rgba(0,82,255,0.36)] hover:-translate-y-0.5 transition-all duration-200 group"
                     >
                         <span>Book a Consultation</span>
@@ -454,14 +473,14 @@ export default function Navbar() {
 
             {/* Mobile Navigation Drawer */}
             {mobileMenuOpen && (
-                <div className="lg:hidden bg-white border-t border-slate-100 px-6 py-5 shadow-xl animate-in slide-in-from-top-2 duration-200">
-                    <nav className="flex flex-col gap-4">
+                <div className="lg:hidden bg-white border-t border-slate-100 px-5 sm:px-6 py-5 shadow-2xl animate-in slide-in-from-top-2 duration-200 max-h-[calc(100vh-80px)] overflow-y-auto">
+                    <nav className="flex flex-col gap-3.5">
                         <Link
                             href="/"
-                            onClick={() => setMobileMenuOpen(false)}
-                            className={`text-[15px] flex items-center justify-between ${isHome
-                                ? "font-bold text-[#0052ff]"
-                                : "font-semibold text-slate-700 hover:text-[#0052ff]"
+                            onClick={(e) => handleLinkClick(e, "/")}
+                            className={`text-[15px] py-2 px-3 rounded-xl transition-colors flex items-center justify-between ${isHome
+                                ? "font-bold text-[#0052ff] bg-blue-50/70"
+                                : "font-semibold text-slate-700 hover:text-[#0052ff] hover:bg-slate-50"
                                 }`}
                         >
                             <span>Home</span>
@@ -471,10 +490,10 @@ export default function Navbar() {
                         </Link>
                         <Link
                             href="/about"
-                            onClick={() => setMobileMenuOpen(false)}
-                            className={`text-[15px] flex items-center justify-between ${isAbout
-                                ? "font-bold text-[#0052ff]"
-                                : "font-semibold text-slate-700 hover:text-[#0052ff]"
+                            onClick={(e) => handleLinkClick(e, "/about")}
+                            className={`text-[15px] py-2 px-3 rounded-xl transition-colors flex items-center justify-between ${isAbout
+                                ? "font-bold text-[#0052ff] bg-blue-50/70"
+                                : "font-semibold text-slate-700 hover:text-[#0052ff] hover:bg-slate-50"
                                 }`}
                         >
                             <span>About</span>
@@ -482,33 +501,72 @@ export default function Navbar() {
                                 <span className="w-2 h-2 rounded-full bg-[#0052ff]" />
                             )}
                         </Link>
-                        <Link
-                            href="/#services"
-                            onClick={() => setMobileMenuOpen(false)}
-                            className="text-[15px] font-semibold text-slate-700 hover:text-[#0052ff]"
-                        >
-                            Services
-                        </Link>
-                        <Link
-                            href="/#industries"
-                            onClick={() => setMobileMenuOpen(false)}
-                            className="text-[15px] font-semibold text-slate-700 hover:text-[#0052ff]"
-                        >
-                            Industries
-                        </Link>
-                        <Link
-                            href="/#resources"
-                            onClick={() => setMobileMenuOpen(false)}
-                            className="text-[15px] font-semibold text-slate-700 hover:text-[#0052ff]"
-                        >
-                            Resources
-                        </Link>
+
+                        {/* Mobile Services Accordion / Group */}
+                        <div className="flex flex-col rounded-xl bg-slate-50/70 p-2.5">
+                            <div className="flex items-center justify-between px-2 py-1.5">
+                                <Link
+                                    href="/services"
+                                    onClick={(e) => handleLinkClick(e, "/services")}
+                                    className={`text-[15px] font-bold ${pathname === "/services" ? "text-[#0052ff]" : "text-slate-800"}`}
+                                >
+                                    Our Services
+                                </Link>
+                                <span className="text-[10px] font-bold uppercase tracking-wider text-[#0052ff] bg-blue-100/60 px-2 py-0.5 rounded-full">
+                                    All 5
+                                </span>
+                            </div>
+
+                            <div className="mt-1 flex flex-col divide-y divide-slate-200/60 pl-1">
+                                <Link
+                                    href="/services#odoo"
+                                    onClick={(e) => handleServiceClick(e, "odoo")}
+                                    className="py-2 px-2 text-[13px] font-semibold text-slate-700 hover:text-[#0052ff] flex items-center justify-between"
+                                >
+                                    <span>Odoo ERP Implementation</span>
+                                    <span className="text-slate-400 text-xs">&rarr;</span>
+                                </Link>
+                                <Link
+                                    href="/services#zoho"
+                                    onClick={(e) => handleServiceClick(e, "zoho")}
+                                    className="py-2 px-2 text-[13px] font-semibold text-slate-700 hover:text-[#0052ff] flex items-center justify-between"
+                                >
+                                    <span>Zoho Software Implementation</span>
+                                    <span className="text-slate-400 text-xs">&rarr;</span>
+                                </Link>
+                                <Link
+                                    href="/services#tally"
+                                    onClick={(e) => handleServiceClick(e, "tally")}
+                                    className="py-2 px-2 text-[13px] font-semibold text-slate-700 hover:text-[#0052ff] flex items-center justify-between"
+                                >
+                                    <span>Tally Implementation & Support</span>
+                                    <span className="text-slate-400 text-xs">&rarr;</span>
+                                </Link>
+                                <Link
+                                    href="/services#ai"
+                                    onClick={(e) => handleServiceClick(e, "ai")}
+                                    className="py-2 px-2 text-[13px] font-semibold text-slate-700 hover:text-[#0052ff] flex items-center justify-between"
+                                >
+                                    <span>AI Solutions & Automation</span>
+                                    <span className="text-slate-400 text-xs">&rarr;</span>
+                                </Link>
+                                <Link
+                                    href="/services#integration"
+                                    onClick={(e) => handleServiceClick(e, "integration")}
+                                    className="py-2 px-2 text-[13px] font-semibold text-slate-700 hover:text-[#0052ff] flex items-center justify-between"
+                                >
+                                    <span>Integration & Consulting</span>
+                                    <span className="text-slate-400 text-xs">&rarr;</span>
+                                </Link>
+                            </div>
+                        </div>
+
                         <Link
                             href="/contact"
-                            onClick={() => setMobileMenuOpen(false)}
-                            className={`text-[15px] flex items-center justify-between ${isContact
-                                ? "font-bold text-[#0052ff]"
-                                : "font-semibold text-slate-700 hover:text-[#0052ff]"
+                            onClick={(e) => handleLinkClick(e, "/contact")}
+                            className={`text-[15px] py-2 px-3 rounded-xl transition-colors flex items-center justify-between ${isContact
+                                ? "font-bold text-[#0052ff] bg-blue-50/70"
+                                : "font-semibold text-slate-700 hover:text-[#0052ff] hover:bg-slate-50"
                                 }`}
                         >
                             <span>Contact</span>
@@ -517,14 +575,14 @@ export default function Navbar() {
                             )}
                         </Link>
 
-                        <div className="pt-3 border-t border-slate-100">
+                        <div className="pt-2 border-t border-slate-100">
                             <Link
                                 href="/contact"
-                                onClick={() => setMobileMenuOpen(false)}
-                                className="w-full inline-flex items-center justify-center gap-2 bg-[#0052ff] text-white font-semibold py-3 rounded-full text-[13px] shadow-sm"
+                                onClick={(e) => handleLinkClick(e, "/contact")}
+                                className="w-full inline-flex items-center justify-center gap-2 bg-[#0052ff] text-white font-bold py-3 px-4 rounded-xl text-[13.5px] shadow-md shadow-blue-500/20 active:scale-95 transition-all"
                             >
-                                <span>Book a Consultation</span>
-                                <span>→</span>
+                                <span>Book a Free Consultation</span>
+                                <span>&rarr;</span>
                             </Link>
                         </div>
                     </nav>

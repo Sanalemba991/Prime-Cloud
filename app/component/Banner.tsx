@@ -93,41 +93,41 @@ export default function Banner() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: false, amount: 0.2 }}
                             transition={{ duration: 1.0, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                            className="flex items-center gap-4 sm:gap-6 pt-3 w-full max-w-[500px]"
+                            className="flex flex-wrap sm:flex-nowrap items-center gap-3 sm:gap-4 md:gap-6 pt-3 w-full max-w-[500px]"
                         >
 
                             {/* Item 1: Streamline Operations */}
-                            <div className="flex items-center gap-2.5">
+                            <div className="flex items-center gap-2 sm:gap-2.5">
                                 <div className="w-6 h-6 flex items-center justify-center shrink-0 text-[#0052ff]">
                                     <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
                                         <path d="M13 2L4 13.5h6.5L9.5 22 20 10.5h-7L13 2z" />
                                     </svg>
                                 </div>
-                                <div className="text-[12px] font-bold text-[#0f172a] leading-tight">
-                                    Streamline <br /> Operations
+                                <div className="text-[11px] sm:text-[12px] font-bold text-[#0f172a] leading-tight">
+                                    Streamline <br className="hidden sm:block" /> Operations
                                 </div>
                             </div>
 
                             {/* Divider */}
-                            <div className="h-8 w-px bg-slate-300" />
+                            <div className="hidden sm:block h-8 w-px bg-slate-300" />
 
                             {/* Item 2: Improve Productivity */}
-                            <div className="flex items-center gap-2.5">
+                            <div className="flex items-center gap-2 sm:gap-2.5">
                                 <div className="w-6 h-6 flex items-center justify-center shrink-0 text-[#0052ff]">
                                     <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
                                         <path d="M4 19h16v2H2V3h2v16zm4-2H6v-5h2v5zm5 0h-2V7h2v10zm5 0h-2v-8h2v8z" />
                                     </svg>
                                 </div>
-                                <div className="text-[12px] font-bold text-[#0f172a] leading-tight">
-                                    Improve <br /> Productivity
+                                <div className="text-[11px] sm:text-[12px] font-bold text-[#0f172a] leading-tight">
+                                    Improve <br className="hidden sm:block" /> Productivity
                                 </div>
                             </div>
 
                             {/* Divider */}
-                            <div className="h-8 w-px bg-slate-300" />
+                            <div className="hidden sm:block h-8 w-px bg-slate-300" />
 
                             {/* Item 3: Scale with AI */}
-                            <div className="flex items-center gap-2.5">
+                            <div className="flex items-center gap-2 sm:gap-2.5">
                                 <div className="w-6 h-6 flex items-center justify-center shrink-0 text-[#0052ff]">
                                     <svg
                                         className="w-5 h-5"
@@ -143,8 +143,8 @@ export default function Banner() {
                                         />
                                     </svg>
                                 </div>
-                                <div className="text-[12px] font-bold text-[#0f172a] leading-tight">
-                                    Scale <br /> with AI
+                                <div className="text-[11px] sm:text-[12px] font-bold text-[#0f172a] leading-tight">
+                                    Scale <br className="hidden sm:block" /> with AI
                                 </div>
                             </div>
 
