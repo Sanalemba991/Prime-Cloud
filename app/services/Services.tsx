@@ -112,56 +112,26 @@ export default function Services() {
             document.body.style.overflow = "unset";
         };
     }, [isModalOpen]);
-    // Ultra-smooth slow-motion scroll animation to the target section
+    // Fast, responsive smooth scroll to target hash anchor
     useEffect(() => {
-        let animationFrameId: number;
-
-        const smoothScrollToTarget = (targetElement: HTMLElement, duration = 1800) => {
-            const navbarHeight = 90; // offset for sticky header
-            const startPosition = window.pageYOffset || document.documentElement.scrollTop;
-            const targetPosition = targetElement.getBoundingClientRect().top + startPosition - navbarHeight;
-            const distance = targetPosition - startPosition;
-            let startTime: number | null = null;
-
-            // Quintic easing for exceptionally smooth, gentle deceleration
-            const easeInOutQuint = (t: number): number => {
-                return t < 0.5 ? 16 * t * t * t * t * t : 1 - Math.pow(-2 * t + 2, 5) / 2;
-            };
-
-            const step = (currentTime: number) => {
-                if (!startTime) startTime = currentTime;
-                const elapsed = currentTime - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-                const ease = easeInOutQuint(progress);
-
-                window.scrollTo(0, startPosition + distance * ease);
-
-                if (elapsed < duration) {
-                    animationFrameId = requestAnimationFrame(step);
-                }
-            };
-
-            animationFrameId = requestAnimationFrame(step);
-        };
-
         const handleHash = () => {
             const hash = window.location.hash;
             if (hash) {
                 const targetId = hash.replace("#", "");
                 const element = document.getElementById(targetId);
                 if (element) {
-                    smoothScrollToTarget(element, 1800);
+                    const navbarHeight = 80;
+                    const y = element.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                    window.scrollTo({ top: y, behavior: "smooth" });
                 }
             }
         };
 
-        // Run on initial page load / after full page reload with hash
-        const timer = setTimeout(handleHash, 250);
+        const timer = setTimeout(handleHash, 50);
         window.addEventListener("hashchange", handleHash);
 
         return () => {
             clearTimeout(timer);
-            cancelAnimationFrame(animationFrameId);
             window.removeEventListener("hashchange", handleHash);
         };
     }, []);
@@ -329,12 +299,8 @@ export default function Services() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6 mb-5 sm:mb-6">
 
                         {/* 1. Odoo Card */}
-                        <motion.div
+                        <div
                             id="odoo"
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: false, amount: 0.2 }}
-                            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                             className="group relative bg-[#fbfcfe] rounded-2xl border border-slate-200/90 p-5 sm:p-7 hover:shadow-xl transition-all duration-300 hover:border-blue-200 flex flex-col justify-between overflow-hidden min-h-0 sm:min-h-[275px] scroll-mt-28"
                         >
                             {/* Card Background Image */}
@@ -386,15 +352,11 @@ export default function Services() {
                                     <span className="group-hover/link:translate-x-1 transition-transform">&rarr;</span>
                                 </button>
                             </div>
-                        </motion.div>
+                        </div>
 
                         {/* 2. Zoho Card */}
-                        <motion.div
+                        <div
                             id="zoho"
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: false, amount: 0.2 }}
-                            transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
                             className="group relative bg-[#fbfcfe] rounded-2xl border border-slate-200/90 p-5 sm:p-7 hover:shadow-xl transition-all duration-300 hover:border-blue-200 flex flex-col justify-between overflow-hidden min-h-0 sm:min-h-[275px] scroll-mt-28"
                         >
                             {/* Card Background Image */}
@@ -446,7 +408,7 @@ export default function Services() {
                                     <span className="group-hover/link:translate-x-1 transition-transform">&rarr;</span>
                                 </button>
                             </div>
-                        </motion.div>
+                        </div>
 
                     </div>
 
@@ -455,12 +417,8 @@ export default function Services() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
 
                         {/* 3. Tally Card */}
-                        <motion.div
+                        <div
                             id="tally"
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: false, amount: 0.2 }}
-                            transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
                             className="group relative bg-[#fbfcfe] rounded-2xl border border-slate-200/90 p-5 sm:p-6 hover:shadow-xl transition-all duration-300 hover:border-blue-200 flex flex-col justify-between overflow-hidden min-h-0 sm:min-h-[265px] scroll-mt-28"
                         >
                             {/* Card Background Image */}
@@ -511,15 +469,11 @@ export default function Services() {
                                     <span className="group-hover/link:translate-x-1 transition-transform">&rarr;</span>
                                 </button>
                             </div>
-                        </motion.div>
+                        </div>
 
                         {/* 4. AI Solutions & Automation Card */}
-                        <motion.div
+                        <div
                             id="ai"
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: false, amount: 0.2 }}
-                            transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
                             className="group relative bg-[#fbfcfe] rounded-2xl border border-slate-200/90 p-5 sm:p-6 hover:shadow-xl transition-all duration-300 hover:border-blue-200 flex flex-col justify-between overflow-hidden min-h-0 sm:min-h-[265px] scroll-mt-28"
                         >
                             {/* Card Background Image */}
@@ -571,15 +525,11 @@ export default function Services() {
                                     <span className="group-hover/link:translate-x-1 transition-transform">&rarr;</span>
                                 </button>
                             </div>
-                        </motion.div>
+                        </div>
 
                         {/* 5. Software Integration & Cloud Consulting Card */}
-                        <motion.div
+                        <div
                             id="integration"
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: false, amount: 0.2 }}
-                            transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
                             className="group relative bg-[#fbfcfe] rounded-2xl border border-slate-200/90 p-5 sm:p-6 hover:shadow-xl transition-all duration-300 hover:border-blue-200 flex flex-col justify-between overflow-hidden min-h-0 sm:min-h-[265px] scroll-mt-28"
                         >
                             {/* Card Background Image */}
@@ -631,7 +581,7 @@ export default function Services() {
                                     <span className="group-hover/link:translate-x-1 transition-transform">&rarr;</span>
                                 </button>
                             </div>
-                        </motion.div>
+                        </div>
 
                     </div>
 
