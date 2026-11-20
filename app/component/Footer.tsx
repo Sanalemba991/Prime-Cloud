@@ -1,9 +1,20 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 export default function Footer() {
+    const handleServiceClick = (e: React.MouseEvent<HTMLAnchorElement>, hash: string) => {
+        e.preventDefault();
+        window.location.href = `/services#${hash}`;
+    };
+
+    const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+        e.preventDefault();
+        window.location.href = href;
+    };
+
     return (
         <footer className="w-full bg-white border-t border-slate-100 select-none overflow-hidden pt-14 pb-8">
             <div className="max-w-[1240px] mx-auto px-5 sm:px-8 lg:px-10">
@@ -20,7 +31,11 @@ export default function Footer() {
                         className="lg:col-span-4 flex flex-col items-start"
                     >
                         {/* Brand Logo (Pure SVG + Typography) */}
-                        <a href="#" className="flex items-center gap-2.5 mb-4 group">
+                        <Link
+                            href="/"
+                            onClick={(e) => handleLinkClick(e, "/")}
+                            className="flex items-center gap-2.5 mb-4 group"
+                        >
                             <div className="w-9 h-9 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
                                 <svg
                                     className="w-full h-full"
@@ -49,7 +64,7 @@ export default function Footer() {
                                     SOLUTIONS LLC
                                 </span>
                             </div>
-                        </a>
+                        </Link>
 
                         {/* Description */}
                         <p className="text-[13px] text-slate-500 font-normal leading-relaxed max-w-sm mb-6">
@@ -119,14 +134,20 @@ export default function Footer() {
                             Quick Links
                         </h4>
                         <ul className="space-y-2.5">
-                            {["Home", "About Us", "Our Services", "Industries", "Contact"].map((item) => (
-                                <li key={item}>
-                                    <a
-                                        href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
+                            {[
+                                { name: "Home", href: "/" },
+                                { name: "About Us", href: "/about" },
+                                { name: "Our Services", href: "/services" },
+                                { name: "Contact", href: "/contact" },
+                            ].map((item) => (
+                                <li key={item.name}>
+                                    <Link
+                                        href={item.href}
+                                        onClick={(e) => handleLinkClick(e, item.href)}
                                         className="text-[13px] text-slate-600 hover:text-[#0052ff] transition-colors"
                                     >
-                                        {item}
-                                    </a>
+                                        {item.name}
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
@@ -145,19 +166,20 @@ export default function Footer() {
                         </h4>
                         <ul className="space-y-2.5">
                             {[
-                                "Odoo ERP Implementation",
-                                "Zoho Software Implementation",
-                                "Tally Implementation & Support",
-                                "AI Solutions & Automation",
-                                "Integration & Consulting",
+                                { name: "Odoo ERP Implementation", hash: "odoo" },
+                                { name: "Zoho Software Implementation", hash: "zoho" },
+                                { name: "Tally Implementation & Support", hash: "tally" },
+                                { name: "AI Solutions & Automation", hash: "ai" },
+                                { name: "Integration & Consulting", hash: "integration" },
                             ].map((item) => (
-                                <li key={item}>
-                                    <a
-                                        href="#services"
-                                        className="text-[13px] text-slate-600 hover:text-[#0052ff] transition-colors"
+                                <li key={item.name}>
+                                    <Link
+                                        href={`/services#${item.hash}`}
+                                        onClick={(e) => handleServiceClick(e, item.hash)}
+                                        className="text-[13px] text-slate-600 hover:text-[#0052ff] transition-colors cursor-pointer"
                                     >
-                                        {item}
-                                    </a>
+                                        {item.name}
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
