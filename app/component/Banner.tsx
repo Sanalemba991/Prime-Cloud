@@ -152,7 +152,7 @@ export default function Banner() {
 
                     </div>
 
-                    {/* ================= RIGHT COLUMN (Floating Badges - Slide in from Right with Gentle Ambient Float) ================= */}
+                    {/* ================= RIGHT COLUMN (Floating Badges - Slide in from Right, Stay Static) ================= */}
                     <div className="lg:col-span-6 relative min-h-[320px] sm:min-h-[380px] flex items-center justify-center">
 
                         {/* FLOATING BADGE 1: Odoo (Top Center-Left) */}
@@ -163,15 +163,15 @@ export default function Banner() {
                             transition={{ duration: 1.1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
                             className="absolute top-4 left-6 sm:left-14 z-20"
                         >
-                            <motion.div
-                                animate={{ y: [0, -7, 0] }}
-                                transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut" }}
-                                className="bg-white/95 backdrop-blur-sm px-5 py-2.5 rounded-2xl shadow-[0_12px_30px_rgba(0,0,0,0.08)] border border-slate-100/90 flex items-center justify-center transition-transform hover:scale-105"
-                            >
-                                <span className="font-black text-2xl text-[#714B67] tracking-tight">
-                                    odoo
-                                </span>
-                            </motion.div>
+                            <div className="bg-white/95 backdrop-blur-sm px-6 py-3.5 rounded-2xl shadow-[0_12px_30px_rgba(0,0,0,0.08)] border border-slate-100/90 flex items-center justify-center transition-transform hover:scale-105">
+                                <Image
+                                    src="/logo/odoo.webp"
+                                    alt="Odoo"
+                                    width={120}
+                                    height={44}
+                                    className="h-9 sm:h-11 w-auto object-contain"
+                                />
+                            </div>
                         </motion.div>
 
                         {/* FLOATING BADGE 2: Zoho (Top Right) */}
@@ -182,26 +182,15 @@ export default function Banner() {
                             transition={{ duration: 1.1, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
                             className="absolute top-6 right-4 sm:right-10 z-20"
                         >
-                            <motion.div
-                                animate={{ y: [0, 7, 0] }}
-                                transition={{ repeat: Infinity, duration: 4.8, ease: "easeInOut", delay: 0.5 }}
-                                className="bg-white/95 backdrop-blur-sm px-4 py-2.5 rounded-2xl shadow-[0_12px_30px_rgba(0,0,0,0.08)] border border-slate-100/90 flex items-center justify-center transition-transform hover:scale-105"
-                            >
-                                <div className="flex items-center gap-1 font-black text-sm">
-                                    <span className="bg-[#e53935] text-white w-6 h-6 rounded flex items-center justify-center font-bold text-xs shadow-xs">
-                                        Z
-                                    </span>
-                                    <span className="bg-[#43a047] text-white w-6 h-6 rounded flex items-center justify-center font-bold text-xs shadow-xs">
-                                        O
-                                    </span>
-                                    <span className="bg-[#1e88e5] text-white w-6 h-6 rounded flex items-center justify-center font-bold text-xs shadow-xs">
-                                        H
-                                    </span>
-                                    <span className="bg-[#fbc02d] text-white w-6 h-6 rounded flex items-center justify-center font-bold text-xs shadow-xs">
-                                        O
-                                    </span>
-                                </div>
-                            </motion.div>
+                            <div className="bg-white/95 backdrop-blur-sm px-6 py-3.5 rounded-2xl shadow-[0_12px_30px_rgba(0,0,0,0.08)] border border-slate-100/90 flex items-center justify-center transition-transform hover:scale-105">
+                                <Image
+                                    src="/logo/zoho2.webp"
+                                    alt="Zoho"
+                                    width={120}
+                                    height={44}
+                                    className="h-9 sm:h-11 w-auto object-contain"
+                                />
+                            </div>
                         </motion.div>
 
                         {/* FLOATING BADGE 3: AI Chip (Middle Left) */}
@@ -212,19 +201,15 @@ export default function Banner() {
                             transition={{ duration: 1.1, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
                             className="absolute top-[52%] -translate-y-1/2 -left-2 sm:left-4 z-20"
                         >
-                            <motion.div
-                                animate={{ y: [0, -8, 0] }}
-                                transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }}
-                                className="bg-white/95 backdrop-blur-sm p-3.5 rounded-2xl shadow-[0_12px_30px_rgba(0,0,0,0.08)] border border-slate-100/90 flex items-center justify-center transition-transform hover:scale-110"
-                            >
-                                <div className="relative w-8 h-8 rounded-lg bg-blue-50 border border-blue-200 flex flex-col items-center justify-center text-[#0052ff]">
-                                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                        <rect x="5" y="5" width="14" height="14" rx="2" strokeWidth={2} />
-                                        <path strokeLinecap="round" d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3" />
-                                    </svg>
-                                    <span className="text-[9px] font-black tracking-tighter absolute">AI</span>
-                                </div>
-                            </motion.div>
+                            <div className="bg-white/95 backdrop-blur-sm p-4 rounded-2xl shadow-[0_12px_30px_rgba(0,0,0,0.08)] border border-slate-100/90 flex items-center justify-center transition-transform hover:scale-110">
+                                <Image
+                                    src="/logo/AI.png"
+                                    alt="AI Solutions"
+                                    width={60}
+                                    height={60}
+                                    className="w-11 h-11 sm:w-12 sm:h-12 object-contain"
+                                />
+                            </div>
                         </motion.div>
 
                         {/* FLOATING BADGE 4: Tally Prime (Bottom Right) */}
@@ -235,21 +220,15 @@ export default function Banner() {
                             transition={{ duration: 1.1, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
                             className="absolute bottom-10 right-2 sm:right-6 z-20"
                         >
-                            <motion.div
-                                animate={{ y: [0, 6, 0] }}
-                                transition={{ repeat: Infinity, duration: 4.2, ease: "easeInOut", delay: 1.2 }}
-                                className="bg-white/95 backdrop-blur-sm px-4 py-2.5 rounded-2xl shadow-[0_12px_30px_rgba(0,0,0,0.08)] border border-slate-100/90 flex flex-col items-center justify-center gap-1 transition-transform hover:scale-105"
-                            >
-                                <div className="w-7 h-7 grid grid-cols-2 gap-0.5 p-0.5 rounded-sm">
-                                    <div className="bg-[#0b5cff] rounded-[1px]"></div>
-                                    <div className="bg-[#eab308] rounded-[1px]"></div>
-                                    <div className="bg-[#38bdf8] rounded-[1px]"></div>
-                                    <div className="bg-[#f59e0b] rounded-[1px]"></div>
-                                </div>
-                                <span className="text-[10px] font-bold text-slate-800 tracking-tight">
-                                    Tally Prime
-                                </span>
-                            </motion.div>
+                            <div className="bg-white/95 backdrop-blur-sm px-6 py-3.5 rounded-2xl shadow-[0_12px_30px_rgba(0,0,0,0.08)] border border-slate-100/90 flex items-center justify-center transition-transform hover:scale-105">
+                                <Image
+                                    src="/logo/tally.png"
+                                    alt="Tally Prime"
+                                    width={120}
+                                    height={44}
+                                    className="h-9 sm:h-11 w-auto object-contain"
+                                />
+                            </div>
                         </motion.div>
 
                     </div>

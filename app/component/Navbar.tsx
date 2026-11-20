@@ -151,6 +151,7 @@ export default function Navbar() {
                                         src="/Glossy Cloud Upload Laptop Illustration.png"
                                         alt="End-to-End Business Solutions Background"
                                         fill
+                                        sizes="(max-width: 1024px) 100vw, 380px"
                                         className="object-cover object-center  transition-transform duration-500"
                                     />
                                     {/* Subtle Overlay to make text pop */}
@@ -176,20 +177,15 @@ export default function Navbar() {
                                         onClick={(e) => handleServiceClick(e, "odoo")}
                                         className="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 transition-colors group/item"
                                     >
-                                        <div className="flex items-center gap-2.5">
-                                            {/* Exact Odoo Logo SVG */}
-                                            <div className="w-10 h-8 flex items-center justify-center shrink-0">
-                                                <svg className="w-full h-auto" viewBox="0 0 110 38" fill="none">
-                                                    {/* O */}
-                                                    <circle cx="17" cy="19" r="12" stroke="#714B67" strokeWidth="5.5" fill="none" />
-                                                    {/* d */}
-                                                    <circle cx="45" cy="19" r="12" stroke="#714B67" strokeWidth="5.5" fill="none" />
-                                                    <path d="M54.5 4v27" stroke="#714B67" strokeWidth="5.5" strokeLinecap="round" />
-                                                    {/* o */}
-                                                    <circle cx="73" cy="19" r="12" stroke="#714B67" strokeWidth="5.5" fill="none" />
-                                                    {/* o */}
-                                                    <circle cx="101" cy="19" r="12" stroke="#714B67" strokeWidth="5.5" fill="none" />
-                                                </svg>
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-11 h-9 flex items-center justify-center shrink-0">
+                                                <Image
+                                                    src="/logo/odoo.webp"
+                                                    alt="Odoo"
+                                                    width={60}
+                                                    height={40}
+                                                    className="w-auto h-7 sm:h-8 max-w-[42px] object-contain"
+                                                />
                                             </div>
                                             <div>
                                                 <h4 className="text-[13px] font-black text-[#0b132b] group-hover/item:text-[#0052ff] transition-colors leading-tight">
@@ -211,19 +207,15 @@ export default function Navbar() {
                                         onClick={(e) => handleServiceClick(e, "zoho")}
                                         className="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 transition-colors group/item"
                                     >
-                                        <div className="flex items-center gap-2.5">
-                                            {/* Exact Zoho 4 Connected Cubes SVG */}
-                                            <div className="w-10 h-8 flex items-center justify-center shrink-0">
-                                                <svg className="w-8 h-6" viewBox="0 0 76 56" fill="none">
-                                                    {/* Red Cube */}
-                                                    <rect x="2" y="8" width="22" height="22" rx="4" transform="rotate(-6 2 8)" stroke="#E42528" strokeWidth="4.5" fill="none" />
-                                                    {/* Green Cube */}
-                                                    <rect x="20" y="4" width="22" height="22" rx="4" transform="rotate(3 20 4)" stroke="#22A447" strokeWidth="4.5" fill="none" />
-                                                    {/* Blue/Cyan Cube */}
-                                                    <rect x="36" y="8" width="22" height="22" rx="4" transform="rotate(-4 36 8)" stroke="#1976D2" strokeWidth="4.5" fill="none" />
-                                                    {/* Yellow/Orange Cube */}
-                                                    <rect x="52" y="7" width="22" height="22" rx="4" transform="rotate(5 52 7)" stroke="#F9A825" strokeWidth="4.5" fill="none" />
-                                                </svg>
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-11 h-9 flex items-center justify-center shrink-0">
+                                                <Image
+                                                    src="/logo/zoho2.webp"
+                                                    alt="Zoho"
+                                                    width={60}
+                                                    height={40}
+                                                    className="w-auto h-7 sm:h-8 max-w-[42px] object-contain"
+                                                />
                                             </div>
                                             <div>
                                                 <h4 className="text-[13px] font-black text-[#0b132b] group-hover/item:text-[#0052ff] transition-colors leading-tight">
@@ -245,18 +237,15 @@ export default function Navbar() {
                                         onClick={(e) => handleServiceClick(e, "tally")}
                                         className="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 transition-colors group/item"
                                     >
-                                        <div className="flex items-center gap-2.5">
-                                            {/* Exact Tally Brush Script Logo SVG */}
-                                            <div className="w-10 h-8 flex items-center justify-center shrink-0">
-                                                <svg className="w-10 h-6" viewBox="0 0 78 36" fill="none">
-                                                    <path
-                                                        d="M5 14 C12 13 22 12 30 11 M16 7 C17 14 17 22 17 29 C17 31 16 32 14 32 M30 25 C31 23 33 20 35 20 C37 20 37 22 36 24 C35 27 33 29 30 29 C28 29 27 27 27 24 C27 20 30 17 33 17 C36 17 38 19 38 23 L37 29 M41 11 L41 29 M46 11 L46 29 M53 19 C55 24 58 29 60 32 M67 19 L58 34 C56 37 54 39 51 39"
-                                                        stroke="#D8232A"
-                                                        strokeWidth="4"
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round"
-                                                    />
-                                                </svg>
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-11 h-9 flex items-center justify-center shrink-0">
+                                                <Image
+                                                    src="/logo/tally.png"
+                                                    alt="Tally"
+                                                    width={60}
+                                                    height={40}
+                                                    className="w-auto h-7 sm:h-8 max-w-[42px] object-contain"
+                                                />
                                             </div>
                                             <div>
                                                 <h4 className="text-[13px] font-black text-[#0b132b] group-hover/item:text-[#0052ff] transition-colors leading-tight">
@@ -278,20 +267,15 @@ export default function Navbar() {
                                         onClick={(e) => handleServiceClick(e, "ai")}
                                         className="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 transition-colors group/item"
                                     >
-                                        <div className="flex items-center gap-2.5">
-                                            {/* AI Chip Icon exact match */}
-                                            <div className="w-10 h-8 flex items-center justify-center shrink-0 text-[#0052ff]">
-                                                <svg className="w-7 h-7" viewBox="0 0 32 32" fill="none">
-                                                    {/* Central Rounded Chip */}
-                                                    <rect x="7" y="7" width="18" height="18" rx="4" stroke="#0052ff" strokeWidth="2.4" fill="none" />
-                                                    {/* Inner AI Text */}
-                                                    <text x="16" y="19" textAnchor="middle" fill="#0052ff" fontSize="9" fontWeight="900" fontFamily="sans-serif">AI</text>
-                                                    {/* Pins */}
-                                                    <path d="M11 2v3M16 2v3M21 2v3" stroke="#0052ff" strokeWidth="2" strokeLinecap="round" />
-                                                    <path d="M11 27v3M16 27v3M21 27v3" stroke="#0052ff" strokeWidth="2" strokeLinecap="round" />
-                                                    <path d="M2 11h3M2 16h3M2 21h3" stroke="#0052ff" strokeWidth="2" strokeLinecap="round" />
-                                                    <path d="M27 11h3M27 16h3M27 21h3" stroke="#0052ff" strokeWidth="2" strokeLinecap="round" />
-                                                </svg>
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-11 h-9 flex items-center justify-center shrink-0">
+                                                <Image
+                                                    src="/logo/AI.png"
+                                                    alt="AI Solutions"
+                                                    width={60}
+                                                    height={40}
+                                                    className="w-auto h-8 sm:h-9 max-w-[42px] object-contain"
+                                                />
                                             </div>
                                             <div>
                                                 <h4 className="text-[13px] font-black text-[#0b132b] group-hover/item:text-[#0052ff] transition-colors leading-tight">
@@ -313,17 +297,15 @@ export default function Navbar() {
                                         onClick={(e) => handleServiceClick(e, "integration")}
                                         className="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 transition-colors group/item"
                                     >
-                                        <div className="flex items-center gap-2.5">
-                                            {/* Triple Layer / Stack Icon exact match */}
-                                            <div className="w-10 h-8 flex items-center justify-center shrink-0">
-                                                <svg className="w-7 h-7" viewBox="0 0 32 32" fill="none">
-                                                    {/* Top diamond layer */}
-                                                    <path d="M16 5 L27 10 L16 15 L5 10 Z" stroke="#0052ff" strokeWidth="2.4" strokeLinejoin="round" fill="none" />
-                                                    {/* Middle layer */}
-                                                    <path d="M5 15 L16 20 L27 15" stroke="#0052ff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                                                    {/* Bottom layer */}
-                                                    <path d="M5 20 L16 25 L27 20" stroke="#0052ff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                                                </svg>
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-11 h-9 flex items-center justify-center shrink-0">
+                                                <Image
+                                                    src="/logo/integration.png"
+                                                    alt="Integration & Consulting"
+                                                    width={60}
+                                                    height={40}
+                                                    className="w-auto h-8 sm:h-9 max-w-[42px] object-contain"
+                                                />
                                             </div>
                                             <div>
                                                 <h4 className="text-[13px] font-black text-[#0b132b] group-hover/item:text-[#0052ff] transition-colors leading-tight">
@@ -349,6 +331,7 @@ export default function Navbar() {
                                         alt="Why Choose Prime Cloud Background"
                                         fill
                                         priority
+                                        sizes="(max-width: 1024px) 100vw, 380px"
                                         className="object-cover object-center group-hover/card:scale-105 transition-transform duration-500"
                                     />
 

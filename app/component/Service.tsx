@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 interface ServiceItem {
@@ -24,10 +25,14 @@ const services: ServiceItem[] = [
         offset: -80,
         delay: 0.1,
         icon: (
-            <div className="w-14 h-14 rounded-2xl bg-[#f5eef8] flex items-center justify-center">
-                <span className="text-xl font-extrabold tracking-tight text-[#714B67]">
-                    odoo
-                </span>
+            <div className="w-16 h-16 rounded-2xl bg-[#f5eef8] flex items-center justify-center p-2 overflow-hidden shadow-2xs">
+                <Image
+                    src="/logo/odoo.webp"
+                    alt="Odoo ERP"
+                    width={56}
+                    height={56}
+                    className="object-contain scale-125"
+                />
             </div>
         ),
     },
@@ -41,21 +46,14 @@ const services: ServiceItem[] = [
         offset: -40,
         delay: 0.2,
         icon: (
-            <div className="w-14 h-14 flex items-center justify-center">
-                <div className="flex items-center gap-1 font-black">
-                    <span className="bg-[#e53935] text-white w-6 h-6 rounded flex items-center justify-center text-xs font-bold shadow-2xs">
-                        Z
-                    </span>
-                    <span className="bg-[#43a047] text-white w-6 h-6 rounded flex items-center justify-center text-xs font-bold shadow-2xs">
-                        O
-                    </span>
-                    <span className="bg-[#1e88e5] text-white w-6 h-6 rounded flex items-center justify-center text-xs font-bold shadow-2xs">
-                        H
-                    </span>
-                    <span className="bg-[#fbc02d] text-white w-6 h-6 rounded flex items-center justify-center text-xs font-bold shadow-2xs">
-                        O
-                    </span>
-                </div>
+            <div className="w-16 h-16 rounded-2xl bg-amber-50/60 flex items-center justify-center p-2.5 overflow-hidden shadow-2xs">
+                <Image
+                    src="/logo/zoho2.webp"
+                    alt="Zoho Software"
+                    width={80}
+                    height={80}
+                    className="object-contain scale-110"
+                />
             </div>
         ),
     },
@@ -69,13 +67,14 @@ const services: ServiceItem[] = [
         offset: 60,
         delay: 0.3,
         icon: (
-            <div className="w-14 h-14 flex items-center justify-center">
-                <div className="w-9 h-9 grid grid-cols-2 gap-0.5 p-0.5 rounded-xs">
-                    <div className="bg-[#0b5cff] rounded-[1px]"></div>
-                    <div className="bg-[#eab308] rounded-[1px]"></div>
-                    <div className="bg-[#38bdf8] rounded-[1px]"></div>
-                    <div className="bg-[#f59e0b] rounded-[1px]"></div>
-                </div>
+            <div className="w-16 h-16 rounded-2xl bg-blue-50/60 flex items-center justify-center p-2 overflow-hidden shadow-2xs">
+                <Image
+                    src="/logo/tally.png"
+                    alt="Tally ERP"
+                    width={29}
+                    height={29}
+                    className="object-contain scale-110"
+                />
             </div>
         ),
     },
@@ -89,25 +88,14 @@ const services: ServiceItem[] = [
         offset: 40,
         delay: 0.4,
         icon: (
-            <div className="w-14 h-14 flex items-center justify-center">
-                <div className="relative w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex flex-col items-center justify-center text-[#0052ff]">
-                    <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                    >
-                        <rect x="5" y="5" width="14" height="14" rx="2" strokeWidth={2} />
-                        <path
-                            strokeLinecap="round"
-                            d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"
-                        />
-                    </svg>
-                    <span className="text-[9px] font-black tracking-tighter absolute">
-                        AI
-                    </span>
-                </div>
+            <div className="w-16 h-16 rounded-2xl bg-indigo-50/60 flex items-center justify-center p-2 overflow-hidden shadow-2xs">
+                <Image
+                    src="/logo/AI.png"
+                    alt="AI Solutions"
+                    width={52}
+                    height={52}
+                    className="object-contain scale-110"
+                />
             </div>
         ),
     },
@@ -121,20 +109,14 @@ const services: ServiceItem[] = [
         offset: 80,
         delay: 0.5,
         icon: (
-            <div className="w-14 h-14 rounded-2xl bg-blue-50/70 flex items-center justify-center text-[#0052ff]">
-                <svg
-                    className="w-7 h-7"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2.2}
-                >
-                    <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0l4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0l-5.571 3-5.571-3"
-                    />
-                </svg>
+            <div className="w-16 h-16 rounded-2xl bg-sky-50/70 flex items-center justify-center p-2 overflow-hidden shadow-2xs">
+                <Image
+                    src="/logo/integration.png"
+                    alt="Integration & Consulting"
+                    width={52}
+                    height={52}
+                    className="object-contain scale-110"
+                />
             </div>
         ),
     },

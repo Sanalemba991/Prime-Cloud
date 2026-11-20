@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "./component/Navbar";
-import Footer from "./component/Footer";
+import AppLayout from "./AppLayout";
 
 export const metadata: Metadata = {
   title: "PrimeCloud - ERP & AI Solutions",
@@ -17,9 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full antialiased">
       <body className="min-h-full flex flex-col font-sans">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <AppLayout>{children}</AppLayout>
       </body>
     </html>
   );
