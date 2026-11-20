@@ -81,7 +81,7 @@ export default function Banner() {
                             className="flex items-center gap-3.5 mb-10"
                         >
                             <a
-                                href="#get-started"
+                                href="/contact"
                                 className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-[#0052ff] hover:bg-[#0047db] text-white font-semibold text-xs sm:text-[13.5px] lg:text-[14px] shadow-[0_4px_16px_rgba(0,82,255,0.28)] hover:shadow-[0_6px_20px_rgba(0,82,255,0.36)] hover:-translate-y-0.5 transition-all duration-200 group"
                             >
                                 <span>Get Started</span>

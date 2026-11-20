@@ -6,10 +6,10 @@ import { motion } from "framer-motion";
 
 interface ServiceItem {
     id: string;
+    hash: string;
     title: string;
     description: string;
     icon: React.ReactNode;
-    href?: string;
     direction: "left" | "right" | "bottom";
     offset: number;
     delay: number;
@@ -18,9 +18,9 @@ interface ServiceItem {
 const services: ServiceItem[] = [
     {
         id: "odoo",
+        hash: "odoo",
         title: "Odoo ERP Implementation",
         description: "Implementation, customization, and ongoing support for Odoo.",
-        href: "#odoo",
         direction: "left",
         offset: -80,
         delay: 0.1,
@@ -38,10 +38,10 @@ const services: ServiceItem[] = [
     },
     {
         id: "zoho",
+        hash: "zoho",
         title: "Zoho Software Implementation",
         description:
             "Setup, customization, and integration of Zoho applications.",
-        href: "#zoho",
         direction: "left",
         offset: -40,
         delay: 0.2,
@@ -59,10 +59,10 @@ const services: ServiceItem[] = [
     },
     {
         id: "tally",
+        hash: "tally",
         title: "Tally Implementation & Support",
         description:
             "Tally setup, migration, customization, and long-term support.",
-        href: "#tally",
         direction: "bottom",
         offset: 60,
         delay: 0.3,
@@ -80,10 +80,10 @@ const services: ServiceItem[] = [
     },
     {
         id: "ai",
+        hash: "ai",
         title: "AI Solutions & Automation",
         description:
             "AI-powered solutions to automate workflows and improve efficiency.",
-        href: "#ai-solutions",
         direction: "right",
         offset: 40,
         delay: 0.4,
@@ -101,10 +101,10 @@ const services: ServiceItem[] = [
     },
     {
         id: "integration",
+        hash: "integration",
         title: "Integration & Consulting",
         description:
             "Software integration, data migration, and business consulting.",
-        href: "#integration-consulting",
         direction: "right",
         offset: 80,
         delay: 0.5,
@@ -123,6 +123,10 @@ const services: ServiceItem[] = [
 ];
 
 export default function Service() {
+    const handleServiceClick = (e: React.MouseEvent<HTMLAnchorElement>, hash: string) => {
+        e.preventDefault();
+        window.location.href = `/services#${hash}`;
+    };
     return (
         <section id="services" className="w-full bg-[#fcfdff] py-16 sm:py-24 select-none overflow-hidden">
             <div className="max-w-[1240px] mx-auto px-5 sm:px-8 lg:px-10">
@@ -180,7 +184,7 @@ export default function Service() {
                                     delay: item.delay,
                                     ease: [0.22, 1, 0.36, 1],
                                 }}
-                                className="group bg-white rounded-2xl p-6 border border-slate-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_30px_rgba(0,82,255,0.08)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between min-h-[300px]"
+                                className="group bg-white rounded-2xl p-6 border border-slate-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_30px_rgba(0,82,255,0.08)]  transition-all duration-300 flex flex-col justify-between min-h-[300px]"
                             >
                                 <div>
                                     {/* Top Icon */}
@@ -202,9 +206,10 @@ export default function Service() {
                                 {/* Bottom Arrow Button */}
                                 <div className="pt-6">
                                     <a
-                                        href={item.href || "#"}
+                                        href={`/services#${item.hash}`}
+                                        onClick={(e) => handleServiceClick(e, item.hash)}
                                         aria-label={`Learn more about ${item.title}`}
-                                        className="w-9 h-9 rounded-full border border-blue-100 bg-blue-50/50 group-hover:bg-[#0052ff] group-hover:border-[#0052ff] flex items-center justify-center text-[#0052ff] group-hover:text-white transition-all duration-200 shadow-2xs"
+                                        className="w-9 h-9 rounded-full border border-blue-100 bg-blue-50/50 group-hover:bg-[#0052ff] group-hover:border-[#0052ff] flex items-center justify-center text-[#0052ff] group-hover:text-white transition-all duration-200 shadow-2xs cursor-pointer"
                                     >
                                         <svg
                                             className="w-4 h-4 transform group-hover:translate-x-0.5 transition-transform"
