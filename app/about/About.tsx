@@ -35,12 +35,21 @@ export default function About() {
             <section className="relative w-full pt-12 pb-16 sm:pb-20 lg:py-24 bg-white overflow-hidden select-none">
                 {/* Background Image Layer */}
                 <div className="absolute inset-0 w-full h-full pointer-events-none select-none overflow-hidden">
+                    {/* Mobile Background Image */}
+                    <Image
+                        src="/banner/Prime Cloud Solutions Glass Banner.png"
+                        alt="About Banner Background Mobile"
+                        fill
+                        priority
+                        className="block sm:hidden object-cover object-right"
+                    />
+                    {/* Desktop / Tablet Background Image */}
                     <Image
                         src="/banner/Glass.png"
                         alt="About Banner Background Aura"
                         fill
                         priority
-                        className="object-cover object-right"
+                        className="hidden sm:block object-cover object-right"
                     />
                 </div>
 
@@ -79,9 +88,14 @@ export default function About() {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: false, amount: 0.2 }}
                                 transition={{ duration: 1.0, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                                className="text-[13.5px] sm:text-sm text-slate-500 font-normal leading-relaxed max-w-xl mb-8"
+                                className="text-[12px] sm:text-sm text-slate-500 font-normal leading-relaxed max-w-xl mb-6 sm:mb-8"
                             >
-                                We empower modern enterprises by simplifying complex operations, unifying disparate workflows, and driving continuous digital innovation with certified expertise in Odoo, Zoho, Tally, and intelligent AI automation.
+                                <span className="sm:hidden">
+                                    We empower modern enterprises by simplifying operations and driving innovation with ERP &amp; AI automation.
+                                </span>
+                                <span className="hidden sm:inline">
+                                    We empower modern enterprises by simplifying complex operations, unifying disparate workflows, and driving continuous digital innovation with certified expertise in Odoo, Zoho, Tally, and intelligent AI automation.
+                                </span>
                             </motion.p>
 
                             {/* CTA Buttons */}
@@ -93,7 +107,7 @@ export default function About() {
                                 className="flex items-center gap-3.5"
                             >
                                 <a
-                                    href="#services"
+                                    href="/services"
                                     className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-[#0052ff] hover:bg-[#0047db] text-white font-semibold text-xs sm:text-[13.5px] shadow-[0_4px_16px_rgba(0,82,255,0.28)] hover:shadow-[0_6px_20px_rgba(0,82,255,0.36)] hover:-translate-y-0.5 transition-all duration-200 group"
                                 >
                                     <span>Our Services</span>
@@ -102,12 +116,7 @@ export default function About() {
                                     </span>
                                 </a>
 
-                                <a
-                                    href="#contact"
-                                    className="inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-white hover:bg-slate-50 text-[#0f172a] font-semibold text-xs sm:text-[13.5px] border border-slate-300 shadow-2xs hover:-translate-y-0.5 transition-all duration-200"
-                                >
-                                    Contact Us
-                                </a>
+
                             </motion.div>
                         </div>
 

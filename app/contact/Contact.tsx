@@ -66,12 +66,21 @@ export default function Contact() {
             <section className="relative w-full pt-12 pb-16 sm:pb-20 lg:py-24 bg-white overflow-hidden select-none">
                 {/* Background Image Layer */}
                 <div className="absolute inset-0 w-full h-full pointer-events-none select-none overflow-hidden">
+                    {/* Mobile Background Image */}
                     <Image
-                        src="/banner/contact.png"
-                        alt="About Banner Background Aura"
+                        src="/banner/Prime Cloud Modern Reception Lobby.png"
+                        alt="Contact Banner Background Mobile"
                         fill
                         priority
-                        className="object-cover object-right"
+                        className="block sm:hidden object-cover object-right"
+                    />
+                    {/* Desktop / Tablet Background Image */}
+                    <Image
+                        src="/banner/contact.png"
+                        alt="Contact Banner Background"
+                        fill
+                        priority
+                        className="hidden sm:block object-cover object-right"
                     />
                 </div>
 
@@ -110,9 +119,14 @@ export default function Contact() {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: false, amount: 0.2 }}
                                 transition={{ duration: 1.0, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                                className="text-[13.5px] sm:text-sm text-slate-500 font-normal leading-relaxed max-w-lg mb-8"
+                                className="text-[12px] sm:text-sm text-slate-500 font-normal leading-relaxed max-w-lg mb-6 sm:mb-8"
                             >
-                                Have a project, a question, or need expert advice? We&apos;re here to help you with ERP, business software, and AI solutions.
+                                <span className="sm:hidden">
+                                    Have a project or question? We&apos;re here to help you with ERP and AI solutions.
+                                </span>
+                                <span className="hidden sm:inline">
+                                    Have a project, a question, or need expert advice? We&apos;re here to help you with ERP, business software, and AI solutions.
+                                </span>
                             </motion.p>
 
                             {/* 3 Trust Badges (Quick Response, Expert Team, Trusted Support) */}

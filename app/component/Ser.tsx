@@ -122,14 +122,14 @@ const industries: IndustryItem[] = [
 
 export default function Ser() {
     return (
-        <section id="industries" className="w-full bg-white py-16 sm:py-20 select-none overflow-hidden">
-            <div className="max-w-[1240px] mx-auto px-5 sm:px-8 lg:px-10">
+        <section id="industries" className="w-full bg-white py-12 sm:py-16 md:py-20 select-none overflow-hidden">
+            <div className="max-w-[1240px] mx-auto px-4 sm:px-8 lg:px-10">
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false, amount: 0.2 }}
                     transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-                    className="relative rounded-2xl sm:rounded-3xl overflow-hidden p-6 sm:p-8 lg:px-10 lg:py-7 mt-8 sm:mt-10 shadow-[0_12px_32px_rgba(0,82,255,0.18)] flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
+                    className="relative rounded-2xl sm:rounded-3xl overflow-hidden p-6 sm:p-8 lg:px-10 lg:py-7 mt-4 sm:mt-8 md:mt-10 shadow-[0_12px_32px_rgba(0,82,255,0.18)] flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
                 >
 
                     {/* Background Image */}
@@ -139,7 +139,7 @@ export default function Ser() {
                             alt="CTA Background"
                             fill
                             priority
-                            className="object-fill w-full h-full"
+                            className="object-cover md:object-fill w-full h-full"
                         />
                     </div>
 
@@ -149,7 +149,7 @@ export default function Ser() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: false, amount: 0.2 }}
                         transition={{ duration: 1.1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-                        className="relative z-10 max-w-xl"
+                        className="relative z-10 max-w-xl text-left"
                     >
                         <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight leading-snug mb-1.5">
                             Ready to Transform Your Business?
@@ -165,11 +165,11 @@ export default function Ser() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: false, amount: 0.2 }}
                         transition={{ duration: 1.1, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-                        className="relative z-10 shrink-0"
+                        className="relative z-10 w-full sm:w-auto shrink-0"
                     >
                         <a
-                            href="#contact"
-                            className="inline-flex items-center gap-2 bg-white hover:bg-slate-50 text-slate-900 font-bold px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-[13px] shadow-[0_4px_16px_rgba(0,0,0,0.1)] hover:shadow-[0_6px_20px_rgba(0,0,0,0.15)] transition-all duration-200 group"
+                            href="/contact"
+                            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-900 font-bold px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-[13px] shadow-[0_4px_16px_rgba(0,0,0,0.1)] hover:shadow-[0_6px_20px_rgba(0,0,0,0.15)] transition-all duration-200 group"
                         >
                             <span>Book a Free Consultation</span>
                             <span className="text-[#0052ff] group-hover:translate-x-0.5 transition-transform duration-200 font-bold">

@@ -87,11 +87,11 @@ export default function Digital() {
     const active = testimonials[activeIndex];
 
     return (
-        <section className="w-full bg-[#f8faff] py-16 sm:py-20 select-none overflow-hidden">
-            <div className="max-w-[1240px] mx-auto px-5 sm:px-8 lg:px-10">
+        <section className="w-full bg-[#f8faff] py-12 sm:py-16 md:py-20 select-none overflow-hidden">
+            <div className="max-w-[1240px] mx-auto px-4 sm:px-8 lg:px-10">
 
                 {/* Section Header */}
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 sm:mb-12">
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 sm:mb-12">
                     <div>
                         <motion.div
                             initial={{ opacity: 0, y: 15 }}
@@ -129,7 +129,7 @@ export default function Digital() {
                 <div
                     onMouseEnter={() => setIsAutoPlay(false)}
                     onMouseLeave={() => setIsAutoPlay(true)}
-                    className="relative rounded-3xl bg-white border border-slate-100 shadow-[0_12px_40px_rgba(0,82,255,0.06)] overflow-hidden px-6 py-7 sm:px-10 sm:py-9 lg:px-12 lg:py-10 mb-8"
+                    className="relative rounded-2xl sm:rounded-3xl bg-white border border-slate-100 shadow-[0_12px_40px_rgba(0,82,255,0.06)] overflow-hidden px-5 py-6 sm:px-10 sm:py-9 lg:px-12 lg:py-10 mb-8"
                 >
                     {/* Background Artwork Aura Layer */}
                     <div className="absolute inset-0 w-full h-full pointer-events-none select-none overflow-hidden opacity-70">
@@ -142,7 +142,7 @@ export default function Digital() {
                         />
                     </div>
 
-                    <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+                    <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 items-center">
 
                         {/* Left Column: Quote, Content & Author */}
                         <div className="lg:col-span-8 flex flex-col justify-between">
@@ -155,7 +155,7 @@ export default function Digital() {
                                     transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                                 >
                                     {/* Star Rating & Service Tag */}
-                                    <div className="flex flex-wrap items-center gap-3 mb-4">
+                                    <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 mb-3.5 sm:mb-4">
                                         <div className="flex items-center gap-1 text-amber-400">
                                             {[...Array(active.rating)].map((_, i) => (
                                                 <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20">
@@ -164,25 +164,25 @@ export default function Digital() {
                                             ))}
                                         </div>
                                         <span className="text-slate-300">•</span>
-                                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-50 text-[11px] font-bold text-[#0052ff]">
+                                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-50 text-[10.5px] sm:text-[11px] font-bold text-[#0052ff]">
                                             {active.service}
                                         </span>
                                     </div>
 
                                     {/* Highlight Headline */}
-                                    <h3 className="text-xl sm:text-2xl font-black text-[#0f172a] tracking-tight leading-snug mb-3.5">
+                                    <h3 className="text-lg sm:text-xl md:text-2xl font-black text-[#0f172a] tracking-tight leading-snug mb-3">
                                         &ldquo;{active.highlight}&rdquo;
                                     </h3>
 
                                     {/* Quote Body */}
-                                    <p className="text-sm sm:text-[15px] leading-relaxed text-slate-600 mb-6 font-normal">
+                                    <p className="text-[13px] sm:text-sm md:text-[15px] leading-relaxed text-slate-600 mb-5 sm:mb-6 font-normal">
                                         {active.content}
                                     </p>
 
                                     {/* Client Identity & Metric */}
                                     <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-100">
-                                        <div className="flex items-center gap-3.5">
-                                            <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[#0052ff]/20 shadow-sm shrink-0">
+                                        <div className="flex items-center gap-3 sm:gap-3.5">
+                                            <div className="relative w-11 h-11 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-[#0052ff]/20 shadow-sm shrink-0">
                                                 <Image
                                                     src={active.avatar}
                                                     alt={active.name}
@@ -191,10 +191,10 @@ export default function Digital() {
                                                 />
                                             </div>
                                             <div>
-                                                <h4 className="text-sm sm:text-[15px] font-extrabold text-slate-900 leading-tight">
+                                                <h4 className="text-[13.5px] sm:text-[15px] font-extrabold text-slate-900 leading-tight">
                                                     {active.name}
                                                 </h4>
-                                                <p className="text-xs text-slate-500 font-medium mt-0.5">
+                                                <p className="text-[11px] sm:text-xs text-slate-500 font-medium mt-0.5">
                                                     {active.role} • <span className="text-slate-700 font-semibold">{active.company}</span>
                                                 </p>
                                             </div>
@@ -207,7 +207,7 @@ export default function Digital() {
                         </div>
 
                         {/* Right Column: Navigation Pills & Overview Cards */}
-                        <div className="lg:col-span-4 flex flex-col justify-center space-y-2.5">
+                        <div className="lg:col-span-4 flex flex-col justify-center space-y-2 sm:space-y-2.5">
                             <span className="text-[11px] font-bold text-slate-400 tracking-wider uppercase mb-1">
                                 Recent Success Stories
                             </span>
@@ -219,13 +219,13 @@ export default function Digital() {
                                         key={item.id}
                                         type="button"
                                         onClick={() => setActiveIndex(idx)}
-                                        className={`w-full text-left p-3.5 rounded-2xl border transition-all duration-300 flex items-center justify-between gap-3 cursor-pointer ${isCurrent
+                                        className={`w-full text-left p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl border transition-all duration-300 flex items-center justify-between gap-3 cursor-pointer ${isCurrent
                                             ? "bg-white border-[#0052ff] shadow-[0_6px_20px_rgba(0,82,255,0.1)] ring-1 ring-[#0052ff]/30 translate-x-1"
                                             : "bg-slate-50/80 border-slate-200/70 hover:bg-white hover:border-slate-300 text-slate-600"
                                             }`}
                                     >
-                                        <div className="flex items-center gap-3 min-w-0">
-                                            <div className="relative w-9 h-9 rounded-full overflow-hidden shrink-0 border border-slate-200">
+                                        <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                                            <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden shrink-0 border border-slate-200">
                                                 <Image
                                                     src={item.avatar}
                                                     alt={item.name}
