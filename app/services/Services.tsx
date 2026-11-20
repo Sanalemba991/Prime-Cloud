@@ -145,12 +145,21 @@ export default function Services() {
             <section className="relative w-full min-h-0 lg:min-h-[560px] flex items-center bg-white overflow-hidden pt-12 pb-16 sm:pb-20 lg:py-16 select-none">
                 {/* Full Banner Background Artwork */}
                 <div className="absolute inset-0 w-full h-full pointer-events-none select-none overflow-hidden">
+                    {/* Mobile Background Image */}
+                    <Image
+                        src="/banner/Modern Blue Tech Dashboard Workspace.png"
+                        alt="Services Hero Banner Background Mobile"
+                        fill
+                        priority
+                        className="block sm:hidden object-cover object-right"
+                    />
+                    {/* Desktop / Tablet Background Image */}
                     <Image
                         src="/banner/Right-Aligned Odoo Dashboard Workspace.png"
                         alt="Services Hero Banner Background"
                         fill
                         priority
-                        className="object-cover object-[75%_center] sm:object-right"
+                        className="hidden sm:block object-cover object-[75%_center] sm:object-right"
                     />
                 </div>
 
@@ -212,12 +221,7 @@ export default function Services() {
                                     </span>
                                 </Link>
 
-                                <a
-                                    href="#core-services"
-                                    className="inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-white hover:bg-slate-50 text-[#0f172a] font-semibold text-xs sm:text-[13.5px] lg:text-[14px] border border-slate-300 shadow-2xs hover:-translate-y-0.5 transition-all duration-200"
-                                >
-                                    Our Services
-                                </a>
+
                             </motion.div>
 
                             {/* Stats Counter Row - Hidden on mobile, visible on desktop/PC */}
@@ -691,8 +695,6 @@ export default function Services() {
 
                 </div>
             </section>
-
-
             {/* =========================================================================
                 4. A SIMPLE 4-STEP IMPLEMENTATION JOURNEY
             ========================================================================= */}

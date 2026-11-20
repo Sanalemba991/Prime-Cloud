@@ -68,7 +68,7 @@ export default function Contact() {
                 <div className="absolute inset-0 w-full h-full pointer-events-none select-none overflow-hidden">
                     {/* Mobile Background Image */}
                     <Image
-                        src="/banner/Prime Cloud Modern Reception Lobby.png"
+                        src="/Prime Cloud Lobby in Blue Waves.png"
                         alt="Contact Banner Background Mobile"
                         fill
                         priority
@@ -122,20 +122,20 @@ export default function Contact() {
                                 className="text-[12px] sm:text-sm text-slate-500 font-normal leading-relaxed max-w-lg mb-6 sm:mb-8"
                             >
                                 <span className="sm:hidden">
-                                    Have a project or question? We&apos;re here to help you with ERP and AI solutions.
+                                    Have a project, a question, or need expert advice? We&apos;re here to help you with ERP, business software, and AI solutions.
                                 </span>
                                 <span className="hidden sm:inline">
                                     Have a project, a question, or need expert advice? We&apos;re here to help you with ERP, business software, and AI solutions.
                                 </span>
                             </motion.p>
 
-                            {/* 3 Trust Badges (Quick Response, Expert Team, Trusted Support) */}
+                            {/* 3 Trust Badges (Quick Response, Expert Team, Trusted Support - Hidden on mobile) */}
                             <motion.div
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: false, amount: 0.2 }}
                                 transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                                className="flex items-center pt-2 max-w-md w-full"
+                                className="hidden sm:flex items-center pt-2 max-w-md w-full"
                             >
                                 {/* Badge 1: Quick Response */}
                                 <div className="flex-1 flex flex-col items-center text-center px-2">
