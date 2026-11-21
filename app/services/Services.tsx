@@ -707,12 +707,12 @@ export default function Services() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: false, amount: 0.2 }}
                         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                        className="w-full rounded-2xl bg-[#f8fbff] border border-blue-100/70 py-5 px-5 sm:py-6 sm:px-8 lg:px-9 shadow-sm"
+                        className="w-full rounded-2xl bg-[#f8fbff] sm:border border-blue-100/70 py-5 px-5 sm:py-6 sm:px-8 lg:px-9 shadow-sm"
                     >
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-4 items-center">
 
                             {/* Left Column: Heading & Subtitle */}
-                            <div className="lg:col-span-4 xl:col-span-4 pr-0 lg:pr-5 lg:border-r lg:border-slate-200/80">
+                            <div className="lg:col-span-4 xl:col-span-4 pr-0 lg:pr-5 border-0 lg:border-r lg:border-slate-200/80">
                                 <div className="inline-flex items-center gap-1.5 text-[11px] font-bold text-[#0052ff] uppercase tracking-wider mb-1.5">
                                     <span>— OUR PROCESS</span>
                                 </div>
@@ -821,9 +821,6 @@ export default function Services() {
             </section>
 
 
-            {/* =========================================================================
-                5. BOTTOM CTA BANNER (Let's Build Your Smarter Tomorrow)
-            ========================================================================= */}
             <section className="w-full pb-12 sm:pb-16 lg:pb-20 bg-white">
                 <div className="max-w-[1240px] mx-auto px-4 sm:px-8 lg:px-10">
                     <motion.div
