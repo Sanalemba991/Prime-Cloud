@@ -33,7 +33,7 @@ export default function Navbar() {
     };
 
     return (
-        <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-slate-100/80 select-none">
+        <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md sm:border-b border-slate-100/80 select-none">
             <div className="max-w-[1240px] mx-auto px-5 sm:px-8 lg:px-10 h-20 flex items-center justify-between">
 
                 {/* Left: Brand Logo (Pure SVG + Typography, No Image) */}
